@@ -4,6 +4,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 SaaApp is an application to  Ministério do Desenvolvimento Agrário that authenticates and access to the user to the Safra Guarantee system and issuance of DAP. Our team is compound by 4 intern guys. Enjoy :)
 
+To run the application you must istall Node 6^ and @angular/cli then you can install all dependencys running ´npm install´.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
