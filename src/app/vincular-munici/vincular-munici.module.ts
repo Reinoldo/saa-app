@@ -1,13 +1,17 @@
-import { FormDebugComponent } from './../form-debug/form-debug.component';
-import { FormsModule } from '@angular/forms';
+import { SharedModule } from './../shared/shared.module';
+
+import { FormsModule, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { VincularMuniciComponent } from './vincular-munici.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpModule } from '@angular/http';
+import 'rxjs/add/operator/map';
 
 @NgModule({
   imports: [
-    CommonModule, FormsModule
+    CommonModule, FormsModule, ReactiveFormsModule, SharedModule, HttpModule
   ],
-  declarations: [VincularMuniciComponent, FormDebugComponent]
+  declarations: [VincularMuniciComponent],
+  providers:[]
 })
 export class VincularMuniciModule { }

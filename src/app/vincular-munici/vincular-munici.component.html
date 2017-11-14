@@ -1,12 +1,14 @@
-<script>$('#myModal').modal('hide')</script>
+
 
 
 
 
 <div class="container div-conteudo" id="teste2">
-  <h4>
-    <span class="title-verde">> Garantia safra</span>
-  </h4>
+  <div class="row row-custom">
+      <i class="material-icons label-icon">play_arrow</i>
+      <h4>  Garantia safra </h4>
+  </div>  
+  
   <hr>
   <div class="col-4 col-sm-3 col-md-2">
   </div>
@@ -20,7 +22,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
 
-          <form #garantiaSafra="ngForm" (ngSubmit)="onSubmit(garantiaSafra)">
+          <form [formGroup]="formularioGS" (ngSubmit)="onSubmitGS()">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">Inserir município para o Garantia safra</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -31,22 +33,16 @@
 
 
               <div class="form-group">
-                <select class="form-control" name="ano_programa" required ngModel #ano="ngModel">
+                <select class="form-control" formControlName="anoPrograma" required >
                   <option value="">Ano do programa</option>
                   <option value="2007/2008">2007/2008</option>
-                  <option value="2009/2010">2009/2010</option>
-                  <option value="2011/2012 ">2011/2012</option>
-                  <option value="2013/2014">2013/2014</option>
-                  <option value="2015/2016">2015/2016</option>
-                  <option value="2017/2018">2017/2018</option>
+                 
 
                 </select>
-                <div *ngIf="ano.invalid && ano.touched">
-                  O ano é obrigatório
-                </div>
+               
               </div>
               <div class="form-group">
-                <select class="form-control" name="uf" required ngModel #uf="ngModel">
+                <select class="form-control" formControlName="uf">
                   <option value="">UF</option>
                   <option value="AC">Acre</option>
                   <option value="AL">Alagoas</option>
@@ -76,34 +72,28 @@
                   <option value="SE">Sergipe</option>
                   <option value="TO">Tocantins</option>
                 </select>
-                <div *ngIf="!uf.valid && uf.touched">
-                  O estado é ogrigatório.
-                </div>
+                
               </div>
               <div class="form-group">
-                <select class="form-control" name="municipio" id="" ngModel required #municipio="ngModel">
+                <select class="form-control" formControlName="municipio" id="" >
                   <option value="">Município</option>
                   <option value="Luziania">Luziânia</option>
                   <option value="Brasilia">Brasilia</option>
                   <option value="Porto Alegre">Porto Alegre</option>
                 </select>
-                <div *ngIf="municipio.invalid && municipio.touched">
-                  O município é ogrigatório.
-                </div>
+                
               </div>
               <div class="form-group">
-                <select class="form-control" name="status" id="" ngModel required #status="ngModel">
+                <select class="form-control" formControlName="status" id="" >
                   <option value="Ativado">Ativado</option>
                   <option value="Desativado">Desativado</option>
                 </select>
-                <div *ngIf="!status.valid && status.touched">
-                  O status é ogrigatório.
-                </div>
+                
               </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-              <button type="submit" class="btn btn-primary" [disabled]="!garantiaSafra.valid">Salvar</button>
+              <button type="submit" class="btn btn-primary">Salvar</button>
             </div>
           </form>
         </div>
@@ -157,15 +147,16 @@
 
       </tbody>
     </table>
-    <app-form-debug [form]="garantiaSafra"></app-form-debug>
+    <app-form-debug [form]="formularioGS"></app-form-debug>
 
   </div>
 </div>
 
 <div class="container div-conteudo">
-  <h4>
-    <span class="title-verde">> Emissão de DAP</span>
-  </h4>
+    <div class="row row-custom">
+        <i class="material-icons label-icon">play_arrow</i>
+        <h4>  Emissão de DAP </h4>
+    </div> 
   <hr>
   <div class="col-4 col-sm-3 col-md-2">
   </div>
@@ -177,98 +168,90 @@
     <input class="button-geral" type="button" value="Adicionar município" data-toggle="modal" data-target="#dap">
     <div class="modal fade" id="dap" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
-        <div NgModelGroup="formDAP">
-        <div class="modal-content">
-
-        
-          <form #emissaoDAP="ngForm" (ngSubmit)="onSubmit(emissaoDAP)">
-            <div class="modal-header">
-              <h5 class="modal-title">Inserir município para a Emissão de DAP</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
+        <div>
+          <div class="modal-content">
 
 
-              <div class="form-group">
-                <select class="form-control" name="ano_programa" required ngModel #anoDAP="ngModel">
-                  <option value="">Ano do programa</option>
-                  <option *ngFor="let anoo of getAnos()" [value]="anoo">{{anoo}}</option>
+            <form [formGroup]="formularioDAP" (ngSubmit)="onSubmitDAP()">
+              <div class="modal-header">
+                <h5 class="modal-title">Inserir município para a Emissão de DAP</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+
+
+                <div class="form-group">
+                  <select class="form-control" formControlName="anoPrograma">
+                    <option value="">Ano do programa</option>
+                    <option value=""></option>
+
+
+                  </select>
                   
 
-                </select>
-                <div *ngIf="anoDAP.invalid && anoDAP.touched">
-                  O ano é obrigatório
                 </div>
-                
-              </div>
-              <div class="form-group">
-                <select class="form-control" name="uf" required id="" ngModel #ufDAP="ngModel">
-                  <option value="">UF</option>
-                  <option value="AC">Acre</option>
-                  <option value="AL">Alagoas</option>
-                  <option value="AP">Amapá</option>
-                  <option value="AM">Amazonas</option>
-                  <option value="BA">Bahia</option>
-                  <option value="CE">Ceará</option>
-                  <option value="DF">Distrito Federal</option>
-                  <option value="ES">Espirito Santo</option>
-                  <option value="GO">Goiás</option>
-                  <option value="MA">Maranhão</option>
-                  <option value="MS">Mato Grosso do Sul</option>
-                  <option value="MT">Mato Grosso</option>
-                  <option value="MG">Minas Gerais</option>
-                  <option value="PA">Pará</option>
-                  <option value="PB">Paraíba</option>
-                  <option value="PR">Paraná</option>
-                  <option value="PE">Pernambuco</option>
-                  <option value="PI">Piauí</option>
-                  <option value="RJ">Rio de Janeiro</option>
-                  <option value="RN">Rio Grande do Norte</option>
-                  <option value="RS">Rio Grande do Sul</option>
-                  <option value="RO">Rondônia</option>
-                  <option value="RR">Roraima</option>
-                  <option value="SC">Santa Catarina</option>
-                  <option value="SP">São Paulo</option>
-                  <option value="SE">Sergipe</option>
-                  <option value="TO">Tocantins</option>
-                </select>
-                <div *ngIf="!ufDAP.valid && ufDAP.touched">
-                  O estado é ogrigatório.
+                <div class="form-group">
+                  <select class="form-control" formControlName="uf">
+                    <option value="">UF</option>
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="ES">Espirito Santo</option>
+                    <option value="GO">Goiás</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PR">Paraná</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+                  </select>
+                  
                 </div>
-              </div>
-              <div class="form-group">
-                <select class="form-control" name="municipio" ngModel required #municipioDAP="ngModel">
-                  <option value="">Município</option>
-                  <option value="Luziania">Luziânia</option>
-                  <option value="Brasilia">Brasilia</option>
-                  <option value="Porto Alegre">Porto Alegre</option>
-                </select>
-                <div *ngIf="!municipioDAP.valid && municipioDAP.touched">
-                  O município é ogrigatório.
+                <div class="form-group">
+                  <select class="form-control" formControlName="municipio">
+                    <option value="">Município</option>
+                    <option value="Luziania">Luziânia</option>
+                    <option value="Brasilia">Brasilia</option>
+                    <option value="Porto Alegre">Porto Alegre</option>
+                  </select>
+                  
                 </div>
-              </div>
-              <div class="form-group">
-                <select class="form-control" name="status" ngModel required #statusDAP="ngModel">
-                  <option value="Ativado">Ativado</option>
-                  <option value="Desativado">Desativado</option>
-                </select>
-                <div *ngIf="!statusDAP.valid && statusDAP.touched">
-                  O status é ogrigatório.
+                <div class="form-group">
+                  <select class="form-control" formControlName="status">
+                    <option value="Ativado">Ativado</option>
+                    <option value="Desativado">Desativado</option>
+                  </select>
+                  
                 </div>
               </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-              <button type="submit"  class=" btn btn-primary " [disabled]="!emissaoDAP.valid">Salvar</button>
-            </div>
-          </form>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button type="submit" class=" btn btn-primary ">Salvar</button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
-      </div>
     </div>
-    <table class="col-md-8 table-geral table-sm table-striped table-bordered " >
+    <table class="col-md-8 table-geral table-sm table-striped table-bordered ">
       <thead class="thead-table ">
         <tr>
           <th scope="col ">Ação</th>
@@ -286,7 +269,7 @@
           <td>reinoldo</td>
           <td>Luziânia</td>
           <td>Ativado</td>
-      
+
         </tr>
         <tr>
           <td>X</td>
@@ -302,20 +285,14 @@
           <td>Luziânia</td>
           <td>Ativado</td>
         </tr>
-        <tr *ngIf="emissaoDAP.valid && emissaoDAP.submitted">
-          <td>X</td>
-          <td>{{ emissaoDAP.value.ano_programa }}</td>
-          <td>reinoldo</td>
-          <td>{{emissaoDAP.value.municipio}}</td>
-          <td>{{emissaoDAP.value.status}}</td>
-        </tr>
-        
+       
+
 
       </tbody>
     </table>
-    
-    <app-form-debug [form]="emissaoDAP "></app-form-debug>
+
+    <app-form-debug [form]="formularioDAP"></app-form-debug>
 
   </div>
-  
+
 </div>

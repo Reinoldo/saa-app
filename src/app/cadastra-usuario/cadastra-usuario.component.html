@@ -1,3 +1,238 @@
-<p>
-  cadastra-usuario works!
-</p>
+<style>
+
+.title-verde{
+}
+.nav-item-right{
+float: right;
+}
+
+</style>
+<div class="container div-conteudo">
+  <h4><span class="title-verde">> Dados pessoais</span></h4>
+  <hr>
+  <div class="col-md-6 col-xl-5">
+      <input class="input-geral form-control" type="text" placeholder="Informe o CPF">
+      <input class="input-geral form-control" type="text" placeholder="Informe o NIS">
+      <input class="input-geral form-control" type="text" placeholder="Informe o nome do novo usuário">
+      <input class="form-control" type="text" placeholder="Informe um apelido">
+  </div>
+  <div class="row">
+    <div class="col-6 col-sm-9 col-md-7">
+      <div class="div-form-radio">
+        <span class="span-sexo">Sexo:</span>
+        <input type="radio" name="sexo" id="test1" name="radio-group" value="Masculino"><label for="test1">Masculino</label>
+        <input type="radio" name="sexo" id="test2" name="radio-group" value="Feminino"><label for="test2">Feminino</label>
+      </div>
+    </div>
+    <div class="col-6 col-sm-3 col-md-2">
+      <select class="input-geral form-control">
+        <option value="" disabled selected style="display: none">Estado civil</option>
+        <option value="">Solteriro(a)</option>
+        <option value="">Casado(a)</option>
+        <option value="">Divorciado(a)</option>
+  <option value="">Amasiado(a)</option>
+      </select>
+    </div>
+  </div>
+
+
+
+  <div class="col-md-12 col-xl-12 div-form-cad">
+    <div class="row">
+      <div class="col-md-5">
+        <input class="form-control input-inicio" type="text" placeholder="Informe o RG (Documento de Identidade)">
+      </div>
+      <div class="col-sm-6 col-md-5 col-md-2">
+        <input class="input-inicio form-control" type="text" placeholder="Emissor (ex SSP)">
+      </div>
+      <div class="col-12 col-sm-6 col-md-2">
+
+        <select class="input-inicio form-control">
+          <option value="Estado Civil">DF</option>
+          <option value="Estado Civil">GO</option>
+          <option value="Estado Civil">PE</option>
+          <option value="Estado Civil">RN</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-5">
+      <input class="input-geral form-control" type="text" placeholder="Data de nascimento" onfocus="(this.type='date')">
+      </div>
+      <div class="col-sm-3">
+        <select class="input-geral form-control">
+          <option value="Estado Civil">DF</option>
+          <option value="Estado Civil">GO</option>
+          <option value="Estado Civil">PE</option>
+          <option value="Estado Civil">RN</option>
+        </select>
+      </div>
+      <div class="col-sm-4">
+        <select class="input-geral form-control">
+          <option value="">Naturalidade</option>
+          <option value="">Ceilandia</option>
+          <option value="">Pará</option>
+          <option value="">Taguatinga</option>
+        </select>
+    </div>
+  </div>
+  <div class="row">
+  <div class="col-12 col-sm-8 col-md-5 col-xl-6">
+      <input class="input-inicio form-control" type="text" placeholder="Nome da mãe">
+
+  </div>
+</div>
+<hr class="hr-sucess">
+
+</div>
+</div>
+
+<div class="container div-conteudo z-depth-2">
+<h4 class="titulo-hr">Informações de contato</h4>
+<hr>
+<input class="button-geral" type="button" value="Adicionar contato" data-toggle="modal" data-target="#modal_contato">
+
+<!-- Modal do botão adicionar contato -->
+<div class="modal fade" id="modal_contato" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Informações de contato</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="col-sm-12">
+      <select class="input-geral form-control">
+        <option value="Estado Civil" disabled selected style="display: none">Tipo de contato</option>
+        <option value="Estado Civil">E-mail</option>
+        <option value="Estado Civil">Número</option>
+      </select>
+    </div>
+    <div class="col-sm-12">
+      <input class="input-inicio form-control" type="text" placeholder="Digite o E-mail para contato">
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="button-geral-secondary" data-dismiss="modal">Fechar</button>
+    <button type="button" class="button-geral">Salvar</button>
+  </div>
+</div>
+</div>
+</div>
+
+<table class="col-md-8 table-geral table-sm table-striped table-bordered">
+  <thead class="thead-table">
+  <tr class="text-center">
+    <th>E-mail</th>
+    <th>Número</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr class="text-center">
+
+    <td>teste.lima@gmail.com</td>
+    <td>(61) 99997-0546</td>
+  </tr>
+  <tr class="text-center">
+
+    <td>teste.lima@gmail.com</td>
+    <td>(61) 99997-0546</td>
+  </tr>
+  <tr class="text-center">
+
+    <td>teste.lima@gmail.com</td>
+    <td>(61) 99997-0546</td>
+  </tr>
+  </tbody>
+</table>
+</div>
+<div class="container div-conteudo">
+<h4 class="titulo-hr">Informações de endereço</h4>
+<hr>
+<input class="button-geral" type="button" value="Adicionar endereço" data-toggle="modal" data-target="#modal_endereco">
+
+<!-- Modal do botão adicionar endereço -->
+<div class="modal fade" id="modal_endereco" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Informações de endereço</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="col-sm-12">
+          <select class="input-geral form-control">
+            <option value="Estado Civil" disabled selected style="display: none">Tipo de endereço</option>
+            <option value="Estado Civil">E-mail</option>
+            <option value="Estado Civil">Número</option>
+          </select>
+        </div>
+        <div class="col-sm-12">
+          <input class="input-inicio form-control" type="text" placeholder="Digite o E-mail para contato">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="button-geral-secondary" data-dismiss="modal">Fechar</button>
+        <button type="button" class="button-geral">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<table class="col-md-8 table-geral table-sm  table-bordered">
+  <thead class="thead-table">
+  <tr class="text-center">
+    <th>Residencial</th>
+    <th>Comercial</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr class="text-center">
+    <td>sonia.perera</td>
+    <td>qnm 10 conjunto f casa 40</td>
+  </tr>
+  <tr class="text-center">
+    <td>sonia.perera</td>
+    <td>qnm 10 conjunto f casa 40</td>
+  </tr>
+  <tr class="text-center">
+    <td>sonia.perera</td>
+    <td>qnm 10 conjunto f casa 40</td>
+  </tr>
+  </tbody>
+</table>
+</div>
+<div class="container div-conteudo">
+<h4 class="titulo-hr">Informações de login</h4>
+<hr>
+<div class="col-md-12 col-xl-12">
+<div class="row">
+<div class="col-md-4">
+<input class="input-geral form-control" type="text" placeholder="Informe um nome de usuário">
+</div>
+<div class="col-md-4">
+<input class="input-geral form-control" type="text" placeholder="Informe a instituição do usuário">
+</div>
+<div class="col-md-3">
+<!-- Estrutura do select -->
+<select class="input-geral form-control">
+  <option value="Estado Civil">Ativado</option>
+  <option value="Estado Civil">Desativado</option>
+</select>
+
+</div>
+</div>
+</div>
+
+<input class="button-geral" type="button" value="Cadastrar Usuário">
+</div>
+
+
+
+
+
+<script  src="js/select.js"></script>

@@ -1,12 +1,12 @@
 <!--The content below is only a placeholder and can be replaced.-->
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-green">  
+<nav class="navbar navbar-expand-lg navbar-light bg-green">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-  
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
@@ -14,18 +14,20 @@
       </li>
       <li class="nav-item">
         <a routerLinkActive="active" routerLink="/cadastro"  class="nav-link">Cadastrar usuário</a>
-      </li>      
+      </li>
+      <li class="nav-item">
+        <a routerLinkActive="active" routerLink="/vincular_perfil" class="nav-link">Vincular perfil</a>
+      </li>
       <li class="nav-item">
         <a routerLinkActive="active" routerLink="/vincular_municipio" class="nav-link">Vincular municipio</a>
       </li>
+      
+
     </ul>
-    
+
   </div>
 </nav>
 
-<div class="container">
-    
+
+
   <router-outlet></router-outlet>
-</div>
-
-
