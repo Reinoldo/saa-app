@@ -1,14 +1,9 @@
-
-
-
-
-
 <div class="container div-conteudo" id="teste2">
   <div class="row row-custom">
-      <i class="material-icons label-icon">play_arrow</i>
-      <h4>  Garantia safra </h4>
-  </div>  
-  
+    <i class="material-icons label-icon">play_arrow</i>
+    <h4> Garantia safra </h4>
+  </div>
+
   <hr>
   <div class="col-4 col-sm-3 col-md-2">
   </div>
@@ -33,72 +28,49 @@
 
 
               <div class="form-group">
-                <select class="form-control" formControlName="anoPrograma" required >
+                <select class="form-control" formControlName="anoPrograma">
                   <option value="">Ano do programa</option>
-                  <option value="2007/2008">2007/2008</option>
-                 
+                  <option *ngFor="let ano of getAnos()">{{ano}}</option>
+
 
                 </select>
-               
+                <app-campo-control-erro [mostrarErro]="verificaValidTouchedGS('anoPrograma')" msgErro="O ano é obrigatório."></app-campo-control-erro>
               </div>
+
               <div class="form-group">
                 <select class="form-control" formControlName="uf">
                   <option value="">UF</option>
-                  <option value="AC">Acre</option>
-                  <option value="AL">Alagoas</option>
-                  <option value="AP">Amapá</option>
-                  <option value="AM">Amazonas</option>
-                  <option value="BA">Bahia</option>
-                  <option value="CE">Ceará</option>
-                  <option value="DF">Distrito Federal</option>
-                  <option value="ES">Espirito Santo</option>
-                  <option value="GO">Goiás</option>
-                  <option value="MA">Maranhão</option>
-                  <option value="MS">Mato Grosso do Sul</option>
-                  <option value="MT">Mato Grosso</option>
-                  <option value="MG">Minas Gerais</option>
-                  <option value="PA">Pará</option>
-                  <option value="PB">Paraíba</option>
-                  <option value="PR">Paraná</option>
-                  <option value="PE">Pernambuco</option>
-                  <option value="PI">Piauí</option>
-                  <option value="RJ">Rio de Janeiro</option>
-                  <option value="RN">Rio Grande do Norte</option>
-                  <option value="RS">Rio Grande do Sul</option>
-                  <option value="RO">Rondônia</option>
-                  <option value="RR">Roraima</option>
-                  <option value="SC">Santa Catarina</option>
-                  <option value="SP">São Paulo</option>
-                  <option value="SE">Sergipe</option>
-                  <option value="TO">Tocantins</option>
+                  <option *ngFor="let estado of getEstado()">{{estado.uf}}</option>
                 </select>
-                
+                <app-campo-control-erro [mostrarErro]="verificaValidTouchedGS('uf')" msgErro="O UF é obrigatório."></app-campo-control-erro>
               </div>
+
               <div class="form-group">
-                <select class="form-control" formControlName="municipio" id="" >
+                <select class="form-control" formControlName="municipio">
                   <option value="">Município</option>
-                  <option value="Luziania">Luziânia</option>
-                  <option value="Brasilia">Brasilia</option>
-                  <option value="Porto Alegre">Porto Alegre</option>
+                  <option *ngFor="let m of getMunicipio()">{{m}}</option>
                 </select>
-                
+                <app-campo-control-erro [mostrarErro]="verificaValidTouchedGS('municipio')" msgErro="O município é obrigatório."></app-campo-control-erro>
               </div>
+
               <div class="form-group">
-                <select class="form-control" formControlName="status" id="" >
+                <select class="form-control" formControlName="status">
                   <option value="Ativado">Ativado</option>
                   <option value="Desativado">Desativado</option>
                 </select>
-                
+                <app-campo-control-erro [mostrarErro]="verificaValidTouchedGS('status')" msgErro="O status é obrigatório."></app-campo-control-erro>
               </div>
             </div>
+
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-              <button type="submit" class="btn btn-primary">Salvar</button>
+              <button type="submit" class="btn btn-primary" [disabled]="!formularioGS.valid">Salvar</button>
             </div>
           </form>
         </div>
       </div>
     </div>
+
     <table class="col-md-8 table-geral table-sm table-striped table-bordered">
       <thead class="thead-table">
         <tr>
@@ -153,10 +125,10 @@
 </div>
 
 <div class="container div-conteudo">
-    <div class="row row-custom">
-        <i class="material-icons label-icon">play_arrow</i>
-        <h4>  Emissão de DAP </h4>
-    </div> 
+  <div class="row row-custom">
+    <i class="material-icons label-icon">play_arrow</i>
+    <h4> Emissão de DAP </h4>
+  </div>
   <hr>
   <div class="col-4 col-sm-3 col-md-2">
   </div>
@@ -185,72 +157,48 @@
                 <div class="form-group">
                   <select class="form-control" formControlName="anoPrograma">
                     <option value="">Ano do programa</option>
-                    <option value=""></option>
-
-
+                    <option *ngFor="let ano of getAnos()">{{ano}}</option>
                   </select>
-                  
+                  <app-campo-control-erro [mostrarErro]="verificaValidTouchedDAP('anoPrograma')" msgErro="O ano é obrigatório."></app-campo-control-erro>
 
                 </div>
+
                 <div class="form-group">
                   <select class="form-control" formControlName="uf">
                     <option value="">UF</option>
-                    <option value="AC">Acre</option>
-                    <option value="AL">Alagoas</option>
-                    <option value="AP">Amapá</option>
-                    <option value="AM">Amazonas</option>
-                    <option value="BA">Bahia</option>
-                    <option value="CE">Ceará</option>
-                    <option value="DF">Distrito Federal</option>
-                    <option value="ES">Espirito Santo</option>
-                    <option value="GO">Goiás</option>
-                    <option value="MA">Maranhão</option>
-                    <option value="MS">Mato Grosso do Sul</option>
-                    <option value="MT">Mato Grosso</option>
-                    <option value="MG">Minas Gerais</option>
-                    <option value="PA">Pará</option>
-                    <option value="PB">Paraíba</option>
-                    <option value="PR">Paraná</option>
-                    <option value="PE">Pernambuco</option>
-                    <option value="PI">Piauí</option>
-                    <option value="RJ">Rio de Janeiro</option>
-                    <option value="RN">Rio Grande do Norte</option>
-                    <option value="RS">Rio Grande do Sul</option>
-                    <option value="RO">Rondônia</option>
-                    <option value="RR">Roraima</option>
-                    <option value="SC">Santa Catarina</option>
-                    <option value="SP">São Paulo</option>
-                    <option value="SE">Sergipe</option>
-                    <option value="TO">Tocantins</option>
+                    <option *ngFor="let estado of getEstado()">{{estado.uf}}</option>
+
                   </select>
-                  
+                  <app-campo-control-erro [mostrarErro]="verificaValidTouchedDAP('uf')" msgErro="O UF é obrigatório."></app-campo-control-erro>
                 </div>
+
                 <div class="form-group">
                   <select class="form-control" formControlName="municipio">
                     <option value="">Município</option>
-                    <option value="Luziania">Luziânia</option>
-                    <option value="Brasilia">Brasilia</option>
-                    <option value="Porto Alegre">Porto Alegre</option>
+                    <option *ngFor="let m of getMunicipio()">{{m}}</option>
                   </select>
-                  
+                  <app-campo-control-erro [mostrarErro]="verificaValidTouchedDAP('municipio')" msgErro="O município é obrigatório."></app-campo-control-erro>
                 </div>
+
                 <div class="form-group">
                   <select class="form-control" formControlName="status">
                     <option value="Ativado">Ativado</option>
                     <option value="Desativado">Desativado</option>
                   </select>
-                  
+                  <app-campo-control-erro [mostrarErro]="verificaValidTouchedDAP('status')" msgErro="O status é obrigatório."></app-campo-control-erro>
                 </div>
               </div>
+
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                <button type="submit" class=" btn btn-primary ">Salvar</button>
+                <button type="submit" class=" btn btn-primary" [disabled]="!formularioDAP.valid">Salvar</button>
               </div>
             </form>
           </div>
         </div>
       </div>
     </div>
+
     <table class="col-md-8 table-geral table-sm table-striped table-bordered ">
       <thead class="thead-table ">
         <tr>
@@ -261,31 +209,15 @@
           <th scope="col ">Status</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
+      <tbody *ngIf="formularioDAP.valid">
 
-          <td>X</td>
-          <td>2010</td>
-          <td>reinoldo</td>
-          <td>Luziânia</td>
-          <td>Ativado</td>
-
-        </tr>
         <tr>
-          <td>X</td>
-          <td>2007</td>
+          <td>x </td>
+          <td>{{formularioDAP.value.anoPrograma}}</td>
           <td>reinoldo</td>
-          <td>Luziânia</td>
-          <td>Ativado</td>
+          <td>{{formularioDAP.value.municipio}}</td>
+          <td>{{formularioDAP.value.status}}</td>
         </tr>
-        <tr>
-          <td>X</td>
-          <td>2007</td>
-          <td>reinoldo</td>
-          <td>Luziânia</td>
-          <td>Ativado</td>
-        </tr>
-       
 
 
       </tbody>
