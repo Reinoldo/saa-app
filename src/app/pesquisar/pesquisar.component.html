@@ -1,3 +1,31 @@
-<p>
-  pesquisar works!
-</p>
+<div class="container div-conteudo">
+
+  <div class="row row-custom">
+    <i class="material-icons label-icon">play_arrow</i>
+    <h4>Selecione um campo para buscar</h4>
+  </div>
+  <div class="col-md-6 col-xl-5">
+    <form [formGroup]="pesquisar">
+      <input class="input-geral form-control" type="text" name="cpf" placeholder="Informe o CPF">
+      <input class="input-geral form-control" type="text" placeholder="Informe o Login" formControlName="login" >
+      <button class="button-geral" type="submit">Pesquisar</button>
+      <button class="button-geral">Cadastrar usuário</button>
+    </form>
+  </div>
+  <div>
+    <br>
+    <h4>Resultados</h4>
+    <br>
+    <table class="col-md-8 table-geral table table-striped table-bordered">
+      <thead class="thead-table">
+        <th scope="col">Login</th>
+        <th scope="col">CPF</th>
+      </thead>
+      <tbody>
+        <td>
+          
+        </td>
+      </tbody>
+    </table>
+  </div>
+</div>
