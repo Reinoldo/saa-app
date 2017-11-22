@@ -1,3 +1,5 @@
+import { FormMunicipioComponent } from './../../vincular-munici/form-municipio/form-municipio.component';
+
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -8,6 +10,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class FormDebugComponent implements OnInit {
 
   @Input() form;
+
 
   constructor() { }
 

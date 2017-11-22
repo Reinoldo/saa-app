@@ -1,0 +1,51 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="modal-header">
+    <h5 class="modal-title">Inserir município para a Emissão de DAP</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+
+    <div class="form-group">
+      <select class="form-control" formControlName="anoPrograma">
+        <option value="">Ano do programa</option>
+        <option *ngFor="let ano of getAnos()">{{ano}}</option>
+      </select>
+      <app-campo-control-erro [mostrarErro]="verificaValidTouched('anoPrograma')" msgErro="O ano é obrigatório."></app-campo-control-erro>
+
+    </div>
+
+    <div class="form-group">
+      <select class="form-control" formControlName="uf">
+        <option value="">UF</option>
+        <option *ngFor="let estado of getEstado()">{{estado.uf}}</option>
+
+      </select>
+      <app-campo-control-erro [mostrarErro]="verificaValidTouched('uf')" msgErro="O UF é obrigatório."></app-campo-control-erro>
+    </div>
+
+    <div class="form-group">
+      <select class="form-control" formControlName="municipio">
+        <option value="">Município</option>
+        <option *ngFor="let m of getMunicipio()">{{m}}</option>
+      </select>
+      <app-campo-control-erro [mostrarErro]="verificaValidTouched('municipio')" msgErro="O município é obrigatório."></app-campo-control-erro>
+    </div>
+
+    <div class="form-group">
+      <select class="form-control" formControlName="status">
+        <option value="Ativado">Ativado</option>
+        <option value="Desativado">Desativado</option>
+      </select>
+      <app-campo-control-erro [mostrarErro]="verificaValidTouched('status')" msgErro="O status é obrigatório."></app-campo-control-erro>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="button-geral-secondary" data-dismiss="modal">Fechar</button>
+    <button type="submit" class="button-geral" [disabled]="!form.valid">Salvar</button>
+  </div>
+</form>
+

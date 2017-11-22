@@ -1,3 +1,4 @@
+import { FormMunicipioComponent } from './../vincular-munici/form-municipio/form-municipio.component';
 
 import { CampoControlErroComponent } from './campo-control-erro/campo-control-erro.component';
 import { FormDebugComponent } from './form-debug/form-debug.component';
@@ -10,5 +11,6 @@ import { CommonModule } from '@angular/common';
   ],
   declarations: [FormDebugComponent, CampoControlErroComponent],
   exports: [FormDebugComponent, CampoControlErroComponent]
+  
 })
 export class SharedModule { }

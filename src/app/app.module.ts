@@ -1,3 +1,6 @@
+import { FormMunicipioComponent } from './vincular-munici/form-municipio/form-municipio.component';
+
+
 import { routing } from './app.routing';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -6,8 +9,8 @@ import { AppComponent } from './app.component';
 
 import { MaterializeModule } from 'angular2-materialize';
 import { LoginComponent } from './login/login.component';
-import { PesquisarComponent } from './pesquisar/pesquisar.component';
-import { CadastraUsuarioComponent } from './cadastra-usuario/cadastra-usuario.component';
+
+import { PesquisarModule } from './pesquisar/pesquisar.module';
 import { VincularMuniciModule } from './vincular-munici/vincular-munici.module';
 import { VincularPerfilComponent } from './vincular-perfil/vincular-perfil.component';
 import { CadastraUsuarioModule } from './cadastra-usuario/cadastra-usuario.module';
@@ -18,7 +21,7 @@ import { CadastraUsuarioModule } from './cadastra-usuario/cadastra-usuario.modul
     AppComponent, LoginComponent, VincularPerfilComponent
   ],
   imports: [
-    BrowserModule,FormsModule, routing, VincularMuniciModule, CadastraUsuarioModule
+    BrowserModule,FormsModule, routing, VincularMuniciModule, CadastraUsuarioModule, PesquisarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
