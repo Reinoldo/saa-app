@@ -211,12 +211,14 @@
       </thead>
       <tbody *ngIf="formularioDAP.valid">
 
-        <tr>
-          <td>x </td>
-          <td>{{formularioDAP.value.anoPrograma}}</td>
+        <tr *ngFor="let cad of getCadastrar()">
+          <td>
+            <a></a>
+          </td>
+          <td>{{cad.anoPrograma}}</td>
           <td>reinoldo</td>
-          <td>{{formularioDAP.value.municipio}}</td>
-          <td>{{formularioDAP.value.status}}</td>
+          <td>{{cad.municipio}}</td>
+          <td>{{cad.status}}</td>
         </tr>
 
 

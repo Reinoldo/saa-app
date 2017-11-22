@@ -13,8 +13,11 @@ export class VincularMuniciComponent implements OnInit {
   formularioGS: FormGroup;
   formularioDAP: FormGroup;
   url: string = 'https://httpbin.org/post';
+
+  private cadastrar: Object[] = []
   private anos: string[] = []
   private municipio: string[] = []
+
   private estados = [{ nome: 'Acre', uf: 'AC' }, { nome: 'Alagoas', uf: 'AL' }, { nome: 'Amapá', uf: 'AP' },
   { nome: 'Amazonas', uf: 'AM' }, { nome: 'Bahia', uf: 'BA' }, { nome: 'Ceará', uf: 'CE' },
   { nome: 'Distrito Federal', uf: 'DF' }, { nome: 'Espirito Santo', uf: 'ES' }, { nome: 'Goiás', uf: 'GO' }, { nome: 'Maranhão', uf: 'MA' },
@@ -34,6 +37,17 @@ export class VincularMuniciComponent implements OnInit {
     this.municipio = ['Luziânia', 'Brasília', 'Porto Alegre'];
   }
 
+  public setCadastrar(dado){
+    this.cadastrar.push(dado);
+    
+  }
+  public retira(): void{
+    
+  }
+
+  public getCadastrar(){
+    return this.cadastrar;
+  }
   public getAnos() {
     return this.anos;
   }
@@ -63,30 +77,35 @@ export class VincularMuniciComponent implements OnInit {
   }
 
   onSubmitGS() {
-    console.log(this.formularioGS);
+    // console.log(this.formularioGS);
 
-    this.http.post(this.url, JSON.stringify(this.formularioGS.value))
-      .map(res => res)
-      .subscribe(dados => {
-        console.log(dados);
-        this.formularioGS.reset();
-      },
-      (error: any) => alert('erro'));
-
+    // this.http.post(this.url, JSON.stringify(this.formularioGS.value))
+    //   .map(res => res)
+    //   .subscribe(dados => {
+    //     console.log(dados);
+    //     this.formularioGS.reset();
+    //   },
+    //   (error: any) => alert('erro'));
+    this.setCadastrar(this.formularioGS.value);
+    this.formularioGS.reset();
 
   }
   onSubmitDAP() {
-    console.log(this.formularioDAP);
+    //console.log(this.formularioDAP);
 
-    this.http.post(this.url, JSON.stringify(this.formularioDAP.value))
-      .map(res => res)
-      .subscribe(dados => {
-        console.log(dados);
-        this.formularioDAP.reset();
-      },
-      (error: any) => alert('erro'))
+    // this.http.post(this.url, JSON.stringify(this.formularioDAP.value))
+    //   .map(res => res)
+    //   .subscribe(dados => {
+    //     console.log(dados);
+    //     this.formularioDAP.reset();
+    //   },
+    //   (error: any) => alert('erro'))
 
+    this.setCadastrar(this.formularioDAP.value);
+    console.log(this.cadastrar);
+       // this.formularioDAP.reset();
   };
+     
 
   /*  recebeDados(){
      this.http.get(this.url)
