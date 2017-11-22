@@ -14,6 +14,8 @@ export class VincularMuniciComponent implements OnInit {
   formularioDAP: FormGroup;
   url: string = 'https://httpbin.org/post';
 
+  id: number = 0;
+
   private cadastrar: Object[] = []
   private anos: string[] = []
   private municipio: string[] = []
@@ -38,6 +40,7 @@ export class VincularMuniciComponent implements OnInit {
   }
 
   public setCadastrar(dado){
+
     this.cadastrar.push(dado);
     
   }
@@ -78,7 +81,7 @@ export class VincularMuniciComponent implements OnInit {
 
   onSubmitGS() {
     // console.log(this.formularioGS);
-
+   
     // this.http.post(this.url, JSON.stringify(this.formularioGS.value))
     //   .map(res => res)
     //   .subscribe(dados => {
@@ -87,12 +90,12 @@ export class VincularMuniciComponent implements OnInit {
     //   },
     //   (error: any) => alert('erro'));
     this.setCadastrar(this.formularioGS.value);
-    this.formularioGS.reset();
+    
 
   }
   onSubmitDAP() {
     //console.log(this.formularioDAP);
-
+    
     // this.http.post(this.url, JSON.stringify(this.formularioDAP.value))
     //   .map(res => res)
     //   .subscribe(dados => {
