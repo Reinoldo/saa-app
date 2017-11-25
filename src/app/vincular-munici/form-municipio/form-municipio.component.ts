@@ -6,11 +6,12 @@ import { Component, OnInit, Input, Injectable } from '@angular/core';
   templateUrl: './form-municipio.component.html',
   styleUrls: ['./form-municipio.component.css']
 })
+
 @Injectable()
 export class FormMunicipioComponent implements OnInit {
 
   @Input() form: FormGroup;
-  private cadastro = [];
+  private cadastro: Object[] = [];
   private anos: string[] = ["2007/2008", "2009/2010", "2011/2012", "2013/2014", "2015/2016"];
   private municipio: string[] = ['Luziânia', 'Brasília', 'Porto Alegre'];
   private status: string[] = ['Ativado', 'Desativado'];
@@ -24,7 +25,7 @@ export class FormMunicipioComponent implements OnInit {
   { nome: 'Roraima', uf: 'RR' }, { nome: 'Santa Catarina', uf: 'SC' }, { nome: 'São Paulo', uf: 'SP' }, { nome: 'Sergipe', uf: 'SE' }, { nome: 'Tocantins', uf: 'TO' }
   ];
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(public formBuilder: FormBuilder) {
 
 
   }
@@ -55,7 +56,7 @@ export class FormMunicipioComponent implements OnInit {
     this.cadastro.push(dado);
   }
 
-  public getCadastros() {
+  public  getCadastros() : Object{
     return this.cadastro;
   }
 

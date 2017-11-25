@@ -24,6 +24,8 @@ export class VincularMuniciComponent implements OnInit {
   }
 
   ngOnInit() {
+ 
+       
     
   }
 

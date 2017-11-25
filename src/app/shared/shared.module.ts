@@ -10,7 +10,8 @@ import { CommonModule } from '@angular/common';
     CommonModule
   ],
   declarations: [FormDebugComponent, CampoControlErroComponent],
-  exports: [FormDebugComponent, CampoControlErroComponent]
+  exports: [FormDebugComponent, CampoControlErroComponent],
+  providers: [FormMunicipioComponent]
   
 })
 export class SharedModule { }

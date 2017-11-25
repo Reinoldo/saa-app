@@ -16,6 +16,6 @@ import { VincularMuniciComponent } from './vincular-munici.component';
     CommonModule, HttpModule, FormMunicipioModule, SharedModule
   ],
   declarations: [VincularMuniciComponent],
-  providers:[]
+  providers:[FormMunicipioComponent]
 })
 export class VincularMuniciModule { }
