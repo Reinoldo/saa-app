@@ -4,21 +4,30 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 
-import { MaterializeModule } from 'angular2-materialize';
+//import { MaterializeModule } from 'angular2-materialize';
 import { LoginComponent } from './login/login.component';
-import { PesquisarComponent } from './pesquisar/pesquisar.component';
-import { CadastraUsuarioComponent } from './cadastra-usuario/cadastra-usuario.component';
+
+import { PesquisarModule } from './pesquisar/pesquisar.module';
 import { VincularMuniciModule } from './vincular-munici/vincular-munici.module';
-import { VincularPerfilComponent } from './vincular-perfil/vincular-perfil.component';
+import { VincularPerfilModule } from './vincular-perfil/vincular-perfil.module';
 import { CadastraUsuarioModule } from './cadastra-usuario/cadastra-usuario.module';
+import { AngularDualListBoxModule } from 'angular-dual-listbox';
 
 
 @NgModule({
   declarations: [
-    AppComponent, LoginComponent, VincularPerfilComponent
+    AppComponent, LoginComponent
   ],
   imports: [
-    BrowserModule,FormsModule, routing, VincularMuniciModule, CadastraUsuarioModule
+    BrowserModule,
+    FormsModule, 
+    routing, 
+    VincularMuniciModule, 
+    CadastraUsuarioModule, 
+    PesquisarModule,
+     VincularPerfilModule,
+     AngularDualListBoxModule
+     
   ],
   providers: [],
   bootstrap: [AppComponent]

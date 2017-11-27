@@ -51,7 +51,7 @@
   }
   .button-geral{
     width: 150px;
-    margin: 5px 10px;
+    margin-right: 0px;    
     background: #429e42;
     color: white;
     padding: 5px;
@@ -60,6 +60,18 @@
     transition: 0.3s;
   }
   .button-geral:hover{
+    background: #5fbb5f;
+    cursor: pointer;
+  }
+
+  /* classe com a função de somente trocar a cor do botão, mas sem alterar as 
+    características do button padrão */
+  .button-geral-cor{ 
+    background: #429e42;
+    color: white;
+    border: none;
+  }
+  .button-geral-cor:hover{
     background: #5fbb5f;
     cursor: pointer;
   }
@@ -120,7 +132,9 @@
     margin-right: 0;
   }
 
-
+  .div-error{
+    color: #ff4343;
+  }
 
 [type="radio"]:checked,
 [type="radio"]:not(:checked) {

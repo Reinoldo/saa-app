@@ -10,9 +10,24 @@
     <div class="col-md-6 col-xl-5">
 
       <input class="input-geral form-control" type="text" placeholder="Informe o CPF" formControlName="cpf">
+      <app-campo-control-erro [mostrarErro]="verificaValidTouchedUSER('cpf')" msgErro="O CPF é obrigatório."></app-campo-control-erro>
+
+      <!--<div class="form-group has-danger">
+        <label class="form-control-label" for="inputDanger1">Input with danger</label>
+        <input type="text" class="form-control form-control-danger" id="inputDanger1">
+        <div class="form-control-feedback">Sorry, that username's taken. Try another?</div>
+        <small class="form-text text-muted">Example help text that remains unchanged.</small>
+      </div>-->
+
       <input class="input-geral form-control" type="text" placeholder="Informe o NIS" formControlName="nis">
+      <app-campo-control-erro [mostrarErro]="verificaValidTouchedUSER('nis')" msgErro="O NIS é obrigatório."></app-campo-control-erro>
+
       <input class="input-geral form-control" type="text" placeholder="Informe o nome do novo usuário" formControlName="usuario">
+      <app-campo-control-erro [mostrarErro]="verificaValidTouchedUSER('usuario')" msgErro="O usuário é obrigatório."></app-campo-control-erro>
+
       <input class="form-control" type="text" placeholder="Informe um apelido" formControlName="apelido">
+     
+      
       <app-form-debug [form]="formularioUSER"></app-form-debug>
     </div>
     <div class="row">
@@ -46,9 +61,8 @@
         <div class="col-12 col-sm-6 col-md-2">
 
           <select class="input-inicio form-control" formControlName="estado_emissor">
-            <option value="GO">GO</option>
-            <option value="PE">PE</option>
-            <option value="RN">RN</option>
+            <option value="GO">UF emissor</option>
+            <option *ngFor="let uf of getEstado()">{{uf.uf}}</option>
           </select>
         </div>
       </div>
@@ -57,11 +71,11 @@
           <input class="input-geral form-control" type="text" placeholder="Data de nascimento" onfocus="(this.type='date')" formControlName="nasc">
         </div>
         <div class="col-sm-3">
-          <select class="input-geral form-control" formControlName="estado_nasc">
-              <option style="display: none;">UF</option>
+          <select class="input-geral form-control" formControlName="estado_nasc" #select>
+            <option style="display: none;">UF</option>
             <option *ngFor="let en of getEstado()">{{en.uf}}</option>
           </select>
-        </div>
+        </div>        
         <div class="col-sm-4">
           <select class="input-geral form-control" formControlName="naturalidade">
             <option style="display: none;">Naturalidade</option>
@@ -86,8 +100,9 @@
     <h4 class="titulo-hr">Informações de contato</h4>
   </div>
   <hr>
+  <div class="col-md-12">
   <input class="button-geral" type="button" value="Adicionar contato" data-toggle="modal" data-target="#modal_contato">
-
+  </div>
   <!-- Modal do botão adicionar contato -->
   <div class="modal fade" id="modal_contato" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -103,10 +118,10 @@
         </div>
         <div class="modal-body">
           <div class="col-sm-12">
-            <input class="input-inicio form-control" type="e-mail" placeholder="Digite o E-mail para contato" required>
+            <input class="input-geral form-control" type="e-mail" placeholder="Digite o E-mail para contato" required>
           </div>
           <div class="col-sm-12">
-              <input class="input-inicio form-control" type="text" placeholder="Digite o número para contato">
+              <input class="input-geral form-control" type="text" placeholder="Digite o número para contato">
             </div>
         </div>
         <div class="modal-footer">
@@ -120,23 +135,30 @@
   <table class="col-md-8 table-geral table-sm table-striped table-bordered">
     <thead class="thead-table">
       <tr class="text-center">
+        <th>Ação</th>
         <th>E-mail</th>
         <th>Número</th>
       </tr>
     </thead>
     <tbody>
       <tr class="text-center">
-
+        <td>
+          <a href=""><img src="/assets/x-2x.png" alt="x"></a>
+        </td>
+        <td>teste.lima@gmail.com</td>
+        <a href="" data-toggle="modal" data-target="#modal_contato"><td>adicionar número</td></a>
+      </tr>
+      <tr class="text-center">
+        <td>
+          <a href=""><img src="/assets/x-2x.png" alt="x"></a>
+        </td>
         <td>teste.lima@gmail.com</td>
         <td>(61) 99997-0546</td>
       </tr>
       <tr class="text-center">
-
-        <td>teste.lima@gmail.com</td>
-        <td>(61) 99997-0546</td>
-      </tr>
-      <tr class="text-center">
-
+        <td>
+          <a href=""><img src="/assets/x-2x.png" alt="x"></a>
+        </td>
         <td>teste.lima@gmail.com</td>
         <td>(61) 99997-0546</td>
       </tr>
@@ -149,8 +171,9 @@
     <h4 class="titulo-hr">Informações de endereço</h4>
   </div>
   <hr>
+  <div class="col-md-12">
   <input class="button-geral" type="button" value="Adicionar endereço" data-toggle="modal" data-target="#modal_endereco">
-
+  </div>
   <!-- Modal do botão adicionar endereço -->
   <div class="modal fade" id="modal_endereco" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -166,41 +189,51 @@
         </div>
         <div class="modal-body">
           <div class="col-sm-12">
-            <select class="input-geral form-control">
-              <option value="Estado Civil" disabled selected style="display: none">Tipo de endereço</option>
-              <option value="Estado Civil">E-mail</option>
-              <option value="Estado Civil">Número</option>
+            <select class="input-geral form-control" formControlName="tipo_endereco">
+              <option disabled selected style="display: none">Tipo de endereço</option>
+              <option value="residencial">Residencial</option>
+              <option value="comercial">Comercial</option>
             </select>
           </div>
           <div class="col-sm-12">
-            <input class="input-inicio form-control" type="text" placeholder="Digite o E-mail para contato">
+            <input class="input-inicio form-control" type="text" placeholder="Digite o endereço" formControlName="endereco">
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="button-geral-secondary" data-dismiss="modal">Fechar</button>
-          <button type="button" class="button-geral">Salvar</button>
+          <button type="submit" class="button-geral">Salvar</button>
         </div>
       </div>
     </div>
   </div>
 
-  <table class="col-md-8 table-geral table-sm  table-bordered">
+  <table class="col-md-8 table-geral table-sm table-striped table-bordered">
     <thead class="thead-table">
       <tr class="text-center">
+        <th>Ação</th>
         <th>Residencial</th>
         <th>Comercial</th>
       </tr>
     </thead>
     <tbody>
       <tr class="text-center">
+        <td>
+          <a href=""><img src="/assets/x-2x.png" alt="x"></a>
+        </td>
         <td>sonia.perera</td>
         <td>qnm 10 conjunto f casa 40</td>
       </tr>
       <tr class="text-center">
+        <td>
+          <a href=""><img src="/assets/x-2x.png" alt="x"></a>
+        </td>
         <td>sonia.perera</td>
         <td>qnm 10 conjunto f casa 40</td>
       </tr>
       <tr class="text-center">
+        <td>
+          <a href=""><img src="/assets/x-2x.png" alt="x"></a>
+        </td>
         <td>sonia.perera</td>
         <td>qnm 10 conjunto f casa 40</td>
       </tr>
@@ -231,8 +264,9 @@
       </div>
     </div>
   </div>
-
+  <div class="col-md-12">
   <input class="button-geral" type="submit" value="Cadastrar Usuário">
+  </div>
   
 
 </div>

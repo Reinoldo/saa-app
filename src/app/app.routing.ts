@@ -1,7 +1,7 @@
 import { ModuleWithProviders} from '@angular/core';
 import { Routes, RouterModule} from '@angular/router';
 
-
+import { PesquisarComponent } from './pesquisar/pesquisar.component';
 import { CadastraUsuarioComponent } from './cadastra-usuario/cadastra-usuario.component';
 import { LoginComponent } from './login/login.component';
 import { VincularMuniciComponent } from './vincular-munici/vincular-munici.component';
@@ -10,6 +10,7 @@ import { VincularPerfilComponent } from './vincular-perfil/vincular-perfil.compo
 
 const APP_ROUTES: Routes = [
     {path: '', component: LoginComponent},
+    {path: 'pesquisar', component: PesquisarComponent},
     {path: 'cadastro', component: CadastraUsuarioComponent},
     {path: 'vincular_municipio', component: VincularMuniciComponent},
     {path: 'vincular_perfil', component: VincularPerfilComponent}

@@ -10,8 +10,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class CadastraUsuarioComponent implements OnInit {
 
   formularioUSER: FormGroup;
-  estado_civil: String[];  
-
+  formularioENDERECO: FormGroup;
+  estado_civil: String[];
+  cadastros: string[] = [];
   private estados = [{ nome: 'Acre', uf: 'AC' }, { nome: 'Alagoas', uf: 'AL' }, { nome: 'Amapá', uf: 'AP' },
   { nome: 'Amazonas', uf: 'AM' }, { nome: 'Bahia', uf: 'BA' }, { nome: 'Ceará', uf: 'CE' },
   { nome: 'Distrito Federal', uf: 'DF' }, { nome: 'Espirito Santo', uf: 'ES' }, { nome: 'Goiás', uf: 'GO' }, { nome: 'Maranhão', uf: 'MA' },
@@ -39,6 +40,14 @@ export class CadastraUsuarioComponent implements OnInit {
     return this.estados;
   }
 
+  public setCadastros(dados) {
+    this.cadastros.push(dados.data);
+ } 
+
+ public getCadastros() {
+   return this.cadastros;
+}
+
   ngOnInit() {
 
     this.formularioUSER = this.formBuilder.group({
@@ -59,18 +68,38 @@ export class CadastraUsuarioComponent implements OnInit {
 
 
     });
+
+    this.formularioENDERECO = this.formBuilder.group({
+      tipo_endereco: [null,Validators.required],
+      endereco: [null,Validators.required]
+    });
   }
 
   onSubmitUSER() {
-    console.log(this.formularioUSER);
+    console.log(this.formularioENDERECO);
 
-    this.http.post('https://httpbin.org/post', JSON.stringify(this.formularioUSER.value))
+    this.http.post('https://httpbin.org/post', JSON.stringify(this.formularioENDERECO.value)) //formularioUSER ou ENDERECO
       .map(res => res)
       .subscribe(dados => {
-        console.log(dados);
+        this.setCadastros(dados.json());
+        console.log(this.cadastros);
         this.formularioUSER.reset();
       },
       (error: any) => alert('erro'));
+
+    }   
+        
+  verificaValidTouchedUSER(campo) {
+
+    return !this.formularioUSER.get(campo).valid && this.formularioUSER.get(campo).touched;
+
+  }      
+
+  aplicaCssErroUSER(campo) {
+    return {
+      'has-error': this.verificaValidTouchedUSER(campo),
+      'has-feedback': this.verificaValidTouchedUSER(campo)
+    }
   }
 
   
