@@ -1,37 +1,84 @@
+import { DadosLoginService } from './../shared/services/dados-login.service';
+import { PesquisaLogin } from './../shared/models/pesquisaLogin';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-pesquisar',
   templateUrl: './pesquisar.component.html',
-  styleUrls: ['./pesquisar.component.css']
+  styleUrls: ['./pesquisar.component.css'],
+  
 })
 export class PesquisarComponent implements OnInit {
 
   pesquisar: FormGroup;
-  achou: boolean;
-  pesquisou = [];
-  numeros = [1,2,3]
-  private dados = [{ cpf: '036' }, { login: 'reinoldo' }]
+  dados = [];
+  
+  dadosLogin: PesquisaLogin[];
 
-  constructor(private formBuilder: FormBuilder) { }
+
+  constructor(private pesquisaUser: FormBuilder, private login: DadosLoginService) {
+
+
+
+  }
 
   ngOnInit() {
-    this.pesquisar = this.formBuilder.group({
+    this.pesquisar = this.pesquisaUser.group({
       cpf: [null],
       login: [null]
     })
 
+    this.login.getLoginECpf()
+      .subscribe(dados => { this.dadosLogin = dados; })
+
+ 
+  
+
+  }
+  setPesquisa(dados) {
+    for (let v of this.dadosLogin) {
+      //console.log(v);
+      if (dados.login == v.login) {
+        this.dados.push(v);
+        //console.log(this.dados)
+      }
+      if (dados.cpf == v.cpf) {
+        this.dados.push(v);
+        //console.log(this.dados)
+      }
+    }
 
   }
 
-  getDados() {
+  public getDados() {
     return this.dados;
   }
 
   onSubmit() {
-    this.pesquisou = this.pesquisar.value;
 
-  
+    if (this.dados.length == 0) {
+      this.setPesquisa(this.pesquisar.value);
+      console.log(this.getDados())
+    }
+    else {
+      this.dados.slice(length+1);
+    
+      this.setPesquisa(this.pesquisar.value);
+      console.log(this.getDados())
+    }
+
+
+  }
+
+  comparacaoBase() {
+    if (!this.pesquisar == null) {
+
+
+      //   else
+      //     alert("Não existe esse CPF ou login cadastrado");
+      // }
+    }
+
   }
 }

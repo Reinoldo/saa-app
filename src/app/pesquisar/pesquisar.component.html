@@ -5,16 +5,17 @@
     <h4>Selecione um campo para buscar</h4>
   </div>
   <div class="col-md-6 col-xl-5">
-
     <form [formGroup]="pesquisar" (ngSubmit)="onSubmit()">
-
       <input class="input-geral form-control" type="text" placeholder="Informe o CPF" formControlName="cpf">
-      <input class="input-geral form-control" type="text" placeholder="Informe o Login" formControlName="login">
-
-      <button class="button-geral" type="submit">Pesquisar</button>
-      <button class="button-geral">Cadastrar usuário</button>
-
+      <input class="input-geral form-control" type="text" placeholder="Informe o Login" formControlName="login" >
+      
+      <button class="button-geral" type="submit">Pesquisar</button> 
+      
     </form>
+    <br>
+      <button [routerLink]="['/cadastro']" class="button-geral">Cadastrar usuário</button>
+    
+   
   </div>
   <div>
     <br>
@@ -26,9 +27,11 @@
         <th scope="col">CPF</th>
       </thead>
       <tbody>
-        <td *ngIf="">
+        <tr *ngFor="let dados of getDados()">
+          <td>{{dados.login}}</td>
+          <td>{{dados.cpf}}</td>
           
-        </td>
+        </tr>
       </tbody>
     </table>
   </div>

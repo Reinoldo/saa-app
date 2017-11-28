@@ -3,7 +3,8 @@
     <i class="material-icons label-icon">play_arrow</i>
     <h4> Garantia safra </h4>
   </div>
-
+  
+  
   <hr>
   <div class="col-4 col-sm-3 col-md-2">
   </div>
@@ -40,7 +41,7 @@
               <div class="form-group">
                 <select class="form-control" formControlName="uf">
                   <option value="">UF</option>
-                  <option *ngFor="let estado of getEstado()">{{estado.uf}}</option>
+                  <option *ngFor="let estado of getEstado()">{{estado.sigla}}</option>
                 </select>
                 <app-campo-control-erro [mostrarErro]="verificaValidTouchedGS('uf')" msgErro="O UF é obrigatório."></app-campo-control-erro>
               </div>
@@ -63,14 +64,17 @@
             </div>
 
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-              <button type="submit" class="btn btn-primary" [disabled]="!formularioGS.valid">Salvar</button>
+              <button type="button" class="button-geral-secondary" data-dismiss="modal">Fechar</button>
+              <button type="submit" class="button-geral" [disabled]="!formularioGS.valid">Salvar</button>
             </div>
           </form>
+          
         </div>
       </div>
     </div>
-
+    <br>
+    <br>
+    
     <table class="col-md-8 table-geral table-sm table-striped table-bordered">
       <thead class="thead-table">
         <tr>
@@ -82,14 +86,20 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let cad of getCadastrar()">
-          <td>
-            <button class="" (click)="retira()">Excluir</button>
-          </td>
+         <tr *ngFor="let cad of getCadastrosGS() ">
+            <td>
+                <a href="" (click)="excluirGS()">
+                  <img src="assets/x-2x.png" alt="">
+                </a>
+                </td>
           <td>{{cad.anoPrograma}}</td>
           <td>reinoldo</td>
           <td>{{cad.municipio}}</td>
           <td>{{cad.status}}</td>
+          
+
+        </tr>
+
 
       </tbody>
     </table>
@@ -117,35 +127,34 @@
         <div>
           <div class="modal-content">
 
-
             <form [formGroup]="formularioDAP" (ngSubmit)="onSubmitDAP()">
               <div class="modal-header">
-                <h5 class="modal-title">Inserir município para a Emissão de DAP</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Inserir município para a DAP</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body">
-
-
+  
+  
                 <div class="form-group">
                   <select class="form-control" formControlName="anoPrograma">
                     <option value="">Ano do programa</option>
                     <option *ngFor="let ano of getAnos()">{{ano}}</option>
+  
+  
                   </select>
                   <app-campo-control-erro [mostrarErro]="verificaValidTouchedDAP('anoPrograma')" msgErro="O ano é obrigatório."></app-campo-control-erro>
-
                 </div>
-
+  
                 <div class="form-group">
                   <select class="form-control" formControlName="uf">
                     <option value="">UF</option>
-                    <option *ngFor="let estado of getEstado()">{{estado.uf}}</option>
-
+                    <option *ngFor="let estado of getEstado()">{{estado.sigla}}</option>
                   </select>
                   <app-campo-control-erro [mostrarErro]="verificaValidTouchedDAP('uf')" msgErro="O UF é obrigatório."></app-campo-control-erro>
                 </div>
-
+  
                 <div class="form-group">
                   <select class="form-control" formControlName="municipio">
                     <option value="">Município</option>
@@ -153,7 +162,7 @@
                   </select>
                   <app-campo-control-erro [mostrarErro]="verificaValidTouchedDAP('municipio')" msgErro="O município é obrigatório."></app-campo-control-erro>
                 </div>
-
+  
                 <div class="form-group">
                   <select class="form-control" formControlName="status">
                     <option value="Ativado">Ativado</option>
@@ -162,17 +171,20 @@
                   <app-campo-control-erro [mostrarErro]="verificaValidTouchedDAP('status')" msgErro="O status é obrigatório."></app-campo-control-erro>
                 </div>
               </div>
-
+  
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                <button type="submit" class=" btn btn-primary" [disabled]="!formularioDAP.valid">Salvar</button>
+                <button type="button" class="button-geral-secondary" data-dismiss="modal">Fechar</button>
+                <button type="submit" class="button-geral" [disabled]="!formularioDAP.valid">Salvar</button>
               </div>
             </form>
+
+
           </div>
         </div>
       </div>
     </div>
-
+    <br>
+    <br>
     <table class="col-md-8 table-geral table-sm table-striped table-bordered ">
       <thead class="thead-table ">
         <tr>
@@ -183,16 +195,20 @@
           <th scope="col ">Status</th>
         </tr>
       </thead>
-      <tbody *ngIf="formularioDAP.valid">
-
-        <tr *ngFor="let cad of getCadastrar()">
+      <tbody>
+        <tr *ngFor="let cad of getCadastrosDAP()">
+          
           <td>
-            <button class="" (click)="retira()">Excluir</button>
-          </td>
+            <a href="" (click)="excluirDAP()">
+              <img src="assets/x-2x.png" alt="">
+            </a>
+            </td>
           <td>{{cad.anoPrograma}}</td>
-          <td>reinoldo</td>
+          <td>login</td>
           <td>{{cad.municipio}}</td>
           <td>{{cad.status}}</td>
+          
+
         </tr>
 
 

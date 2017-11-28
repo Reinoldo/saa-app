@@ -51,7 +51,11 @@
   }
   .button-geral{
     width: 150px;
+<<<<<<< HEAD
+    margin-right: 0px;    
+=======
     
+>>>>>>> 70cf47d1da2a5fee0471f96988638dcb04520142
     background: #429e42;
     color: white;
     padding: 5px;
@@ -60,6 +64,18 @@
     transition: 0.3s;
   }
   .button-geral:hover{
+    background: #5fbb5f;
+    cursor: pointer;
+  }
+
+  /* classe com a função de somente trocar a cor do botão, mas sem alterar as 
+    características do button padrão */
+  .button-geral-cor{ 
+    background: #429e42;
+    color: white;
+    border: none;
+  }
+  .button-geral-cor:hover{
     background: #5fbb5f;
     cursor: pointer;
   }
@@ -120,7 +136,9 @@
     margin-right: 0;
   }
 
-
+  .div-error{
+    color: #ff4343;
+  }
 
 [type="radio"]:checked,
 [type="radio"]:not(:checked) {
