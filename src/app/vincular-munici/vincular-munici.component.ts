@@ -18,10 +18,6 @@ export class VincularMuniciComponent implements OnInit {
   
   
   url: string = 'https://httpbin.org/post';
-
-  id: number = 0;
-
-  private cadastrar: Object[] = []
   private anos: string[] = []
   private cadastrosGS = []
   private cadastrosDAP = []
@@ -133,7 +129,6 @@ export class VincularMuniciComponent implements OnInit {
       // (error: any) => alert('erro'))
 
   };
-     
 
   /*  recebeDados(){
      this.http.get(this.url)

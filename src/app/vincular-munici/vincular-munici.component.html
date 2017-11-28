@@ -86,25 +86,19 @@
         </tr>
       </thead>
       <tbody>
-<<<<<<< HEAD
          <tr *ngFor="let cad of getCadastrosGS() ">
-           <td><button (click)="excluirGS()" >Excluir</button></td>
-=======
-        <tr *ngFor="let cad of getCadastrar()">
-          <td>
-            <button class="" (click)="retira()">Excluir</button>
-          </td>
->>>>>>> 70cf47d1da2a5fee0471f96988638dcb04520142
+            <td>
+                <a href="" (click)="excluirGS()">
+                  <img src="assets/x-2x.png" alt="">
+                </a>
+                </td>
           <td>{{cad.anoPrograma}}</td>
           <td>reinoldo</td>
           <td>{{cad.municipio}}</td>
           <td>{{cad.status}}</td>
-<<<<<<< HEAD
           
 
         </tr>
-=======
->>>>>>> 70cf47d1da2a5fee0471f96988638dcb04520142
 
 
       </tbody>
@@ -135,7 +129,7 @@
 
             <form [formGroup]="formularioDAP" (ngSubmit)="onSubmitDAP()">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Inserir município para o DAP</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Inserir município para a DAP</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -150,7 +144,7 @@
   
   
                   </select>
-                  <app-campo-control-erro [mostrarErro]="verificaValidTouchedGS('anoPrograma')" msgErro="O ano é obrigatório."></app-campo-control-erro>
+                  <app-campo-control-erro [mostrarErro]="verificaValidTouchedDAP('anoPrograma')" msgErro="O ano é obrigatório."></app-campo-control-erro>
                 </div>
   
                 <div class="form-group">
@@ -158,7 +152,7 @@
                     <option value="">UF</option>
                     <option *ngFor="let estado of getEstado()">{{estado.sigla}}</option>
                   </select>
-                  <app-campo-control-erro [mostrarErro]="verificaValidTouchedGS('uf')" msgErro="O UF é obrigatório."></app-campo-control-erro>
+                  <app-campo-control-erro [mostrarErro]="verificaValidTouchedDAP('uf')" msgErro="O UF é obrigatório."></app-campo-control-erro>
                 </div>
   
                 <div class="form-group">
@@ -166,7 +160,7 @@
                     <option value="">Município</option>
                     <option *ngFor="let m of getMunicipio()">{{m}}</option>
                   </select>
-                  <app-campo-control-erro [mostrarErro]="verificaValidTouchedGS('municipio')" msgErro="O município é obrigatório."></app-campo-control-erro>
+                  <app-campo-control-erro [mostrarErro]="verificaValidTouchedDAP('municipio')" msgErro="O município é obrigatório."></app-campo-control-erro>
                 </div>
   
                 <div class="form-group">
@@ -174,7 +168,7 @@
                     <option value="Ativado">Ativado</option>
                     <option value="Desativado">Desativado</option>
                   </select>
-                  <app-campo-control-erro [mostrarErro]="verificaValidTouchedGS('status')" msgErro="O status é obrigatório."></app-campo-control-erro>
+                  <app-campo-control-erro [mostrarErro]="verificaValidTouchedDAP('status')" msgErro="O status é obrigatório."></app-campo-control-erro>
                 </div>
               </div>
   
@@ -203,24 +197,18 @@
       </thead>
       <tbody>
         <tr *ngFor="let cad of getCadastrosDAP()">
-          <td><button (click)="excluirDAP()">Excluir</button></td>
+          
+          <td>
+            <a href="" (click)="excluirDAP()">
+              <img src="assets/x-2x.png" alt="">
+            </a>
+            </td>
           <td>{{cad.anoPrograma}}</td>
           <td>login</td>
           <td>{{cad.municipio}}</td>
           <td>{{cad.status}}</td>
           
 
-<<<<<<< HEAD
-=======
-        <tr *ngFor="let cad of getCadastrar()">
-          <td>
-            <button class="" (click)="retira()">Excluir</button>
-          </td>
-          <td>{{cad.anoPrograma}}</td>
-          <td>reinoldo</td>
-          <td>{{cad.municipio}}</td>
-          <td>{{cad.status}}</td>
->>>>>>> 70cf47d1da2a5fee0471f96988638dcb04520142
         </tr>
 
 

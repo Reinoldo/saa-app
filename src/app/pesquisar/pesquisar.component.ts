@@ -1,13 +1,13 @@
 import { DadosLoginService } from './../shared/services/dados-login.service';
 import { PesquisaLogin } from './../shared/models/pesquisaLogin';
-import { Pessoa } from './pessoa';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-pesquisar',
   templateUrl: './pesquisar.component.html',
-  styleUrls: ['./pesquisar.component.css']
+  styleUrls: ['./pesquisar.component.css'],
+  
 })
 export class PesquisarComponent implements OnInit {
 
@@ -32,6 +32,8 @@ export class PesquisarComponent implements OnInit {
     this.login.getLoginECpf()
       .subscribe(dados => { this.dadosLogin = dados; })
 
+ 
+  
 
   }
   setPesquisa(dados) {
