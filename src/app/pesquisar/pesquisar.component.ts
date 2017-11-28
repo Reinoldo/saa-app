@@ -1,5 +1,5 @@
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-pesquisar',
@@ -8,19 +8,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PesquisarComponent implements OnInit {
 
-  pesquisar: FormBuilder;
+  pesquisar: FormGroup;
+  achou: boolean;
+  pesquisou = [];
+  numeros = [1,2,3]
+  private dados = [{ cpf: '036' }, { login: 'reinoldo' }]
 
-  private dados = [{cpf: "036.598.311-07", login: "reinoldo"},{cpf: "036.598.311-08", login: "marco"},
-  {cpf: "036.598.311-09", login: "ygor"} ];
-
-  constructor() { }
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    this.pesquisar = this.formBuilder.group({
+      cpf: [null],
+      login: [null]
+    })
 
-   
+
   }
 
-  getDados(){
+  getDados() {
     return this.dados;
+  }
+
+  onSubmit() {
+    this.pesquisou = this.pesquisar.value;
+
+  
   }
 }

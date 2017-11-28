@@ -11,6 +11,7 @@ import { CadastraUsuarioComponent } from './cadastra-usuario/cadastra-usuario.co
 import { VincularMuniciModule } from './vincular-munici/vincular-munici.module';
 import { VincularPerfilComponent } from './vincular-perfil/vincular-perfil.component';
 import { CadastraUsuarioModule } from './cadastra-usuario/cadastra-usuario.module';
+import { PesquisarModule } from './pesquisar/pesquisar.module';
 
 
 @NgModule({
@@ -18,7 +19,7 @@ import { CadastraUsuarioModule } from './cadastra-usuario/cadastra-usuario.modul
     AppComponent, LoginComponent, VincularPerfilComponent
   ],
   imports: [
-    BrowserModule,FormsModule, routing, VincularMuniciModule, CadastraUsuarioModule
+    BrowserModule,FormsModule, routing, VincularMuniciModule, CadastraUsuarioModule, PesquisarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
