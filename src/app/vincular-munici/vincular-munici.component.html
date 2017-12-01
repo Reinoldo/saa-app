@@ -52,7 +52,7 @@
                 <label for="">Informe o município:</label>
                 <select class="form-control" formControlName="municipio">
                   <option value="">Município</option>
-                  <option *ngFor="let m of getMunicipio('RS')" >{{m}}</option>
+                  <option *ngFor="let m of getMunicipio(formularioGS.value.uf)" >{{m}}</option>
                 </select>
                 <app-campo-control-erro [mostrarErro]="verificaValidTouchedGS('municipio')" msgErro="O município é obrigatório."></app-campo-control-erro>
               </div>
@@ -163,7 +163,7 @@
                   <label for="">Informe o município:</label>
                   <select class="form-control" formControlName="municipio">
                     <option value="">Município</option>
-                    <option *ngFor="let m of getMunicipio('SP')">{{m}}</option>
+                    <option *ngFor="let m of getMunicipio(formularioDAP.value.uf)">{{m}}</option>
                   </select>
                   <app-campo-control-erro [mostrarErro]="verificaValidTouchedDAP('municipio')" msgErro="O município é obrigatório."></app-campo-control-erro>
                 </div>
