@@ -1,3 +1,4 @@
+import { AuthService } from './login/auth.service';
 import { routing } from './app.routing';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -20,16 +21,16 @@ import { AngularDualListBoxModule } from 'angular-dual-listbox';
   ],
   imports: [
     BrowserModule,
-    FormsModule, 
-    routing, 
-    VincularMuniciModule, 
-    CadastraUsuarioModule, 
+    FormsModule,
+    routing,
+    VincularMuniciModule,
+    CadastraUsuarioModule,
     PesquisarModule,
-     VincularPerfilModule,
-     AngularDualListBoxModule
-     
+    VincularPerfilModule,
+    AngularDualListBoxModule
+
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

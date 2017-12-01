@@ -1,7 +1,7 @@
 import { EstadoBr } from './../shared/models/estado-br.model';
 import { EstadosBrService } from './../shared/services/estados-br.service';
 import { Http } from '@angular/http';
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 
@@ -14,36 +14,37 @@ export class VincularMuniciComponent implements OnInit {
 
   formularioGS: FormGroup;
   formularioDAP: FormGroup;
-  
-  
-  
+
+  mostrarTabelaGS: boolean = false;
+  mostrarTabelaDAP: boolean = false;
+
   url: string = 'https://httpbin.org/post';
   private anos: string[] = []
   private cadastrosGS = []
   private cadastrosDAP = []
   private municipio: string[] = []
- 
+
   private estados: EstadoBr[];
 
 
   constructor(private listaEstados: EstadosBrService, private formBuilder: FormBuilder) {
     this.anos = ["2007/2008", "2009/2010", "2011/2012", "2013/2014", "2015/2016"];
     this.municipio = ['Luziânia', 'Brasília', 'Porto Alegre'];
-    
-  
+
+
 
   }
 
- 
+
 
   ngOnInit() {
 
     this.formularioGS = this.formBuilder.group({
-      
+
       anoPrograma: [null, Validators.required],
       uf: [null, Validators.required],
       municipio: [null, Validators.required],
-      status: ['Ativado', Validators.required]      
+      status: ['Ativado', Validators.required]
     });
 
     this.formularioDAP = this.formBuilder.group({
@@ -52,9 +53,13 @@ export class VincularMuniciComponent implements OnInit {
       municipio: [null, Validators.required],
       status: ['Ativado', Validators.required]
     });
-    
-    this.listaEstados.getEstadosBr()
-    .subscribe(dados => {this.estados = dados});
+
+    this.listaEstados.getEstadosCidadesBr()
+      .subscribe(dados => this.estados = dados);
+
+
+
+
   }
 
   public getAnos() {
@@ -62,42 +67,50 @@ export class VincularMuniciComponent implements OnInit {
   }
 
   public setCadastrosGS(dados) {
-    
-    dados.id = this.cadastrosGS.length +1;
-     this.cadastrosGS.push(dados);
-  } 
+
+
+    this.cadastrosGS.push(dados);
+  }
 
   public setCadastrosDAP(dados) {
-    dados.id = this.cadastrosDAP.length +1;
+
     this.cadastrosDAP.push(dados);
- } 
+  }
 
   public getCadastrosGS() {
     return this.cadastrosGS;
- }
- public getCadastrosDAP() {
-  return this.cadastrosDAP;
-}
-
-  public getMunicipio() {
-    return this.municipio;
   }
-  public getEstado(){
+  public getCadastrosDAP() {
+    return this.cadastrosDAP;
+  }
+
+  public getMunicipio(sigla: string) {
+    for (let s of this.getEstado()) {
+      if (s.sigla == sigla) {
+        return s.cidades;
+      }
+      
+    }
+    
+  }
+  public getEstado() {
+
     return this.estados;
-  
+
   }
 
-  excluirGS(){  
+  excluirGS(index: number) {
 
-    this.cadastrosGS.slice(1);
-    this.cadastrosGS.sort();
-    
+
+    this.cadastrosGS.splice(index, 1);
+    //this.cadastrosGS.sort()
+
+    //this.cadastrosGS.sort();
+    console.log(this.cadastrosGS)
   }
-  excluirDAP(){
-
-   
-    
-    
+  excluirDAP(index: number) {
+    this.cadastrosDAP.splice(index, 1);
+    console.log(this.cadastrosDAP)
   }
   onSubmitGS() {
     // console.log(this.formularioGS);
@@ -105,11 +118,14 @@ export class VincularMuniciComponent implements OnInit {
     // this.http.post(this.url, JSON.stringify(this.formularioGS.value))
     //   .map(res => res)
     //   .subscribe(dados => {
-        this.setCadastrosGS(this.formularioGS.value);
-        console.log(this.getCadastrosGS());
-        //this.formularioGS.reset();
-      // },
-      // (error: any) => alert('erro'));
+    this.setCadastrosGS(this.formularioGS.value);
+    console.log(this.getCadastrosGS());
+    this.mostrarTabelaGS = true;
+
+    this.formularioGS.reset()
+    //this.formularioGS.reset();
+    // },
+    // (error: any) => alert('erro'));
 
 
   }
@@ -117,16 +133,18 @@ export class VincularMuniciComponent implements OnInit {
     //console.log(this.formularioDAP);
 
     // this.http.post(this.url, JSON.stringify(this.formularioDAP.value))
-    
+
     //   .map(res => res)
     //   .subscribe(dados => {
-        
-        this.setCadastrosDAP(this.formularioDAP.value);
-        console.log(this.getCadastrosDAP());
-        
-      //   this.formularioDAP.reset();
-      // },
-      // (error: any) => alert('erro'))
+
+    this.setCadastrosDAP(this.formularioDAP.value);
+    console.log(this.getCadastrosDAP());
+
+    this.mostrarTabelaDAP = true;
+    this.formularioDAP.reset()
+    //   this.formularioDAP.reset();
+    // },
+    // (error: any) => alert('erro'))
 
   };
 

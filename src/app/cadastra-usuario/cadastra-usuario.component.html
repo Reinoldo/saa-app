@@ -104,6 +104,7 @@
   <input class="button-geral" type="button" value="Adicionar contato" data-toggle="modal" data-target="#modal_contato">
   </div>
   <!-- Modal do botão adicionar contato -->
+  <form [formGroup]="formularioCONTATO" (ngSubmit)="onSubmitCONTATO()" >
   <div class="modal fade" id="modal_contato" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -118,19 +119,20 @@
         </div>
         <div class="modal-body">
           <div class="col-sm-12">
-            <input class="input-geral form-control" type="e-mail" placeholder="Digite o E-mail para contato" required>
+            <input class="input-geral form-control" type="e-mail" formControlName="email" placeholder="Digite o E-mail para contato" required>
           </div>
           <div class="col-sm-12">
-              <input class="input-geral form-control" type="text" placeholder="Digite o número para contato">
+              <input class="input-geral form-control" type="text" formControlName="numero" placeholder="Digite o número para contato">
             </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="button-geral-secondary" data-dismiss="modal">Fechar</button>
-          <button type="button" class="button-geral">Salvar</button>
+          <button type="submit" class="button-geral">Salvar</button>
         </div>
       </div>
     </div>
   </div>
+  </form>
 
   <table class="col-md-8 table-geral table-sm table-striped table-bordered">
     <thead class="thead-table">
@@ -140,11 +142,16 @@
         <th>Número</th>
       </tr>
     </thead>
+      <tr class="text-center" *ngFor="let cad_con of getCadastroCON(); let i = index">
+        <td><button (click)="ExcluirCON(i);">Excluir</button></td>
+        <td>{{cad_con.email}}</td>
+        <td>{{cad_con.numero}}</td>
+      </tr>
     <tbody>
       <tr class="text-center">
         <td>
           <a href=""><img src="/assets/x-2x.png" alt="x"></a>
-        </td>
+        </td>        
         <td>teste.lima@gmail.com</td>
         <a href="" data-toggle="modal" data-target="#modal_contato"><td>adicionar número</td></a>
       </tr>
@@ -175,6 +182,7 @@
   <input class="button-geral" type="button" value="Adicionar endereço" data-toggle="modal" data-target="#modal_endereco">
   </div>
   <!-- Modal do botão adicionar endereço -->
+  <form [formGroup]="formularioENDERECO" (ngSubmit)="onSubmitENDERECO()">
   <div class="modal fade" id="modal_endereco" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -190,9 +198,8 @@
         <div class="modal-body">
           <div class="col-sm-12">
             <select class="input-geral form-control" formControlName="tipo_endereco">
-              <option disabled selected style="display: none">Tipo de endereço</option>
-              <option value="residencial">Residencial</option>
-              <option value="comercial">Comercial</option>
+              <option value="" style="display: none;">Tipo de endereço</option>
+              <option *ngFor="let tipo of getTipo_endereco()" value="residencial">{{tipo}}</option>
             </select>
           </div>
           <div class="col-sm-12">
@@ -206,16 +213,22 @@
       </div>
     </div>
   </div>
-
+</form>
   <table class="col-md-8 table-geral table-sm table-striped table-bordered">
     <thead class="thead-table">
       <tr class="text-center">
         <th>Ação</th>
-        <th>Residencial</th>
+        <th>Tipo</th>
         <th>Comercial</th>
       </tr>
     </thead>
     <tbody>
+      <tr class="text-center" *ngFor="let cad_end of getCadastroEND(); let i = index">
+        <td><button (click)="ExcluirEND(i);">Excluir</button></td>
+        <td>{{cad_end.tipo_endereco}}</td>
+        <td>{{cad_end.endereco}}</td>
+
+      </tr>
       <tr class="text-center">
         <td>
           <a href=""><img src="/assets/x-2x.png" alt="x"></a>
