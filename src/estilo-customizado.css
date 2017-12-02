@@ -51,7 +51,11 @@
   }
   .button-geral{
     width: 150px;
+<<<<<<< HEAD
     
+=======
+    margin-right: 0px;    
+>>>>>>> e9bac587dc74f6c100890e74e371e2708fd348b8
     background: #429e42;
     color: white;
     padding: 5px;

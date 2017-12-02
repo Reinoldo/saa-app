@@ -10,9 +10,13 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class CadastraUsuarioComponent implements OnInit {
 
   formularioUSER: FormGroup;
+  formularioCONTATO: FormGroup;
   formularioENDERECO: FormGroup;
   estado_civil: String[];
   cadastros: string[] = [];
+  cadastroCON: string[] = [];
+  cadastroEND: string[] = [];
+  tipo_endereco: string[] = [];
   private estados = [{ nome: 'Acre', uf: 'AC' }, { nome: 'Alagoas', uf: 'AL' }, { nome: 'Amapá', uf: 'AP' },
   { nome: 'Amazonas', uf: 'AM' }, { nome: 'Bahia', uf: 'BA' }, { nome: 'Ceará', uf: 'CE' },
   { nome: 'Distrito Federal', uf: 'DF' }, { nome: 'Espirito Santo', uf: 'ES' }, { nome: 'Goiás', uf: 'GO' }, { nome: 'Maranhão', uf: 'MA' },
@@ -22,15 +26,17 @@ export class CadastraUsuarioComponent implements OnInit {
   { nome: 'Roraima', uf: 'RR' }, { nome: 'Santa Catarina', uf: 'SC' }, { nome: 'São Paulo', uf: 'SP' }, { nome: 'Sergipe', uf: 'SE' }, { nome: 'Tocantins', uf: 'TO' }
   ];
 
+
+
   naturalidade: String[];
 
   constructor(private formBuilder: FormBuilder, private http: Http) {
 
     this.estado_civil = ["Solteiro(a)", "Casado(a)", "Divorciado(a)", "Amasiado(a)"];
 
-    this.naturalidade = ["Ceilândia", "Pará", "Taguatinga"];
-  
-    
+    this.naturalidade = ["Ceilândia", "Pará", "Taguatinga"]; 
+
+    this.tipo_endereco = ["Residencial", "Comercial"];
 
      
   
@@ -39,13 +45,46 @@ export class CadastraUsuarioComponent implements OnInit {
   public getEstado(){
     return this.estados;
   }
+  public getTipo_endereco(){
+    return this.tipo_endereco;
+  }
 
   public setCadastros(dados) {
-    this.cadastros.push(dados.data);
  } 
 
- public getCadastros() {
-   return this.cadastros;
+  public getCadastros() {
+    return this.cadastros;
+  }
+
+  public setCadastroCON(dados){
+    dados.id = this.cadastroCON.length +1;
+    this.cadastroCON.push(dados);
+  }
+
+  public getCadastroCON(){    
+    return this.cadastroCON;
+  }
+
+  public setCadastroEND(dados){
+    dados.id = this.cadastroCON.length +1;
+    this.cadastroEND.push(dados);
+  }
+  public getCadastroEND(){
+    return this.cadastroEND;
+  }
+
+  public Excluir(index : number) {
+    this.cadastros.splice(index, 1);
+    console.log(this.cadastros);
+}
+  public ExcluirCON(index : number){
+    this.cadastroCON.splice(index, 1);
+    console.log(this.cadastroCON);
+}
+
+  public ExcluirEND(index : number){
+    this.cadastroEND.splice(index, 1);
+    console.log(this.cadastroEND);
 }
 
   ngOnInit() {
@@ -66,7 +105,11 @@ export class CadastraUsuarioComponent implements OnInit {
       naturalidade: [null,Validators.required],
       nome_mae: [null,Validators.required]
 
+    });
 
+    this.formularioCONTATO = this.formBuilder.group({
+      email: [null,Validators.required],
+      numero: [null,Validators.required]
     });
 
     this.formularioENDERECO = this.formBuilder.group({
@@ -76,18 +119,25 @@ export class CadastraUsuarioComponent implements OnInit {
   }
 
   onSubmitUSER() {
-    console.log(this.formularioENDERECO);
+    //this.http.post('https://httpbin.org/post', JSON.stringify(this.formularioENDERECO.value)) //formularioUSER ou ENDERECO
+      //.map(res => res)
+     // .subscribe(dados => {
+        this.setCadastros(this.formularioENDERECO.value);
+        console.log(this.getCadastros());
+        //this.setCadastros(dados.json());
+       // console.log(this.cadastros);
+        //this.formularioUSER.reset();
+      }
+     // (error: any) => alert('erro'));
+ onSubmitCONTATO(){
+        this.setCadastroCON(this.formularioCONTATO.value);
+        console.log(this.getCadastroCON());
+ }
+ onSubmitENDERECO(){
+        this.setCadastroEND(this.formularioENDERECO.value);
+        console.log(this.getCadastroEND());
 
-    this.http.post('https://httpbin.org/post', JSON.stringify(this.formularioENDERECO.value)) //formularioUSER ou ENDERECO
-      .map(res => res)
-      .subscribe(dados => {
-        this.setCadastros(dados.json());
-        console.log(this.cadastros);
-        this.formularioUSER.reset();
-      },
-      (error: any) => alert('erro'));
-
-    }   
+ }      
         
   verificaValidTouchedUSER(campo) {
 

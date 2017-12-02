@@ -7,8 +7,8 @@ export class EstadosBrService {
 
   constructor(private http: Http) { }
 
-  getEstadosBr() {
-    return this.http.get('assets/dados/estadosbr.json')
+  getEstadosCidadesBr() {
+    return this.http.get('assets/dados/estados-cidades.json')
       .map((res: Response) => res.json());
   }
 }

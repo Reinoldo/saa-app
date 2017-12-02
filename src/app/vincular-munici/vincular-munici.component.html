@@ -29,8 +29,9 @@
 
 
               <div class="form-group">
+                <label for="">Informe o ano do programa:</label>
                 <select class="form-control" formControlName="anoPrograma">
-                  <option value="">Ano do programa</option>
+                  <option value="" aria-placeholder="Ano Programa">Ano do programa</option>
                   <option *ngFor="let ano of getAnos()">{{ano}}</option>
 
 
@@ -39,22 +40,25 @@
               </div>
 
               <div class="form-group">
-                <select class="form-control" formControlName="uf">
+                  <label for="">Informe o UF:</label>
+                <select class="form-control" formControlName="uf" >
                   <option value="">UF</option>
                   <option *ngFor="let estado of getEstado()">{{estado.sigla}}</option>
                 </select>
-                <app-campo-control-erro [mostrarErro]="verificaValidTouchedGS('uf')" msgErro="O UF é obrigatório."></app-campo-control-erro>
+                <!-- <app-campo-control-erro [mostrarErro]="verificaValidTouchedGS('uf')" msgErro="O UF é obrigatório."></app-campo-control-erro> -->
               </div>
 
               <div class="form-group">
+                <label for="">Informe o município:</label>
                 <select class="form-control" formControlName="municipio">
                   <option value="">Município</option>
-                  <option *ngFor="let m of getMunicipio()">{{m}}</option>
+                  <option *ngFor="let m of getMunicipio(formularioGS.value.uf)" >{{m}}</option>
                 </select>
                 <app-campo-control-erro [mostrarErro]="verificaValidTouchedGS('municipio')" msgErro="O município é obrigatório."></app-campo-control-erro>
               </div>
 
               <div class="form-group">
+                <label for="">Informe o status:</label>
                 <select class="form-control" formControlName="status">
                   <option value="Ativado">Ativado</option>
                   <option value="Desativado">Desativado</option>
@@ -65,7 +69,7 @@
 
             <div class="modal-footer">
               <button type="button" class="button-geral-secondary" data-dismiss="modal">Fechar</button>
-              <button type="submit" class="button-geral" [disabled]="!formularioGS.valid">Salvar</button>
+              <button type="submit" class="btn button-geral" [disabled]="!formularioGS.valid">Salvar</button>
             </div>
           </form>
           
@@ -75,7 +79,7 @@
     <br>
     <br>
     
-    <table class="col-md-8 table-geral table-sm table-striped table-bordered">
+    <table class="col-md-8 table-geral table-sm table-striped table-bordered" *ngIf="mostrarTabelaGS">
       <thead class="thead-table">
         <tr>
           <th scope="col">Ação</th>
@@ -86,12 +90,19 @@
         </tr>
       </thead>
       <tbody>
+<<<<<<< HEAD
          <tr *ngFor="let cad of getCadastrosGS()">
             <td>
                 <a href="" (click)="excluirGS(cad.id)">
                   <img src="assets/x-2x.png" alt="">
                 </a>
                 </td>
+=======
+         <tr *ngFor="let cad of getCadastrosGS(); let i = index; " >
+            <td>
+                <button (click)="excluirGS(i)">Excluir</button>
+            </td>
+>>>>>>> e9bac587dc74f6c100890e74e371e2708fd348b8
           <td>{{cad.anoPrograma}}</td>
           <td>reinoldo</td>
           <td>{{cad.municipio}}</td>
@@ -103,7 +114,7 @@
 
       </tbody>
     </table>
-    <app-form-debug [form]="formularioGS"></app-form-debug>
+    <!-- <app-form-debug [form]="formularioGS"></app-form-debug> -->
 
   </div>
 </div>
@@ -138,6 +149,7 @@
   
   
                 <div class="form-group">
+                  <label for="">Informe o ano do programa:</label>
                   <select class="form-control" formControlName="anoPrograma">
                     <option value="">Ano do programa</option>
                     <option *ngFor="let ano of getAnos()">{{ano}}</option>
@@ -148,6 +160,7 @@
                 </div>
   
                 <div class="form-group">
+                  <label for="">Informe o UF:</label>
                   <select class="form-control" formControlName="uf">
                     <option value="">UF</option>
                     <option *ngFor="let estado of getEstado()">{{estado.sigla}}</option>
@@ -156,14 +169,16 @@
                 </div>
   
                 <div class="form-group">
+                  <label for="">Informe o município:</label>
                   <select class="form-control" formControlName="municipio">
                     <option value="">Município</option>
-                    <option *ngFor="let m of getMunicipio()">{{m}}</option>
+                    <option *ngFor="let m of getMunicipio(formularioDAP.value.uf)">{{m}}</option>
                   </select>
                   <app-campo-control-erro [mostrarErro]="verificaValidTouchedDAP('municipio')" msgErro="O município é obrigatório."></app-campo-control-erro>
                 </div>
   
                 <div class="form-group">
+                  <label for="">Informe o status:</label>
                   <select class="form-control" formControlName="status">
                     <option value="Ativado">Ativado</option>
                     <option value="Desativado">Desativado</option>
@@ -185,7 +200,7 @@
     </div>
     <br>
     <br>
-    <table class="col-md-8 table-geral table-sm table-striped table-bordered ">
+    <table class="col-md-8 table-geral table-sm table-striped table-bordered" *ngIf="mostrarTabelaDAP">
       <thead class="thead-table ">
         <tr>
           <th scope="col ">Ação</th>
@@ -196,12 +211,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let cad of getCadastrosDAP()">
+        <tr *ngFor="let cad of getCadastrosDAP(); let i = index;">
           
           <td>
-            <a href="" (click)="excluirDAP()">
-              <img src="assets/x-2x.png" alt="">
-            </a>
+            <button (click)="excluirDAP(i)">Excluir</button>
             </td>
           <td>{{cad.anoPrograma}}</td>
           <td>login</td>
@@ -215,7 +228,7 @@
       </tbody>
     </table>
 
-    <app-form-debug [form]="formularioDAP"></app-form-debug>
+    <!-- <app-form-debug [form]="formularioDAP"></app-form-debug> -->
 
   </div>
 

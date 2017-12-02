@@ -1,3 +1,4 @@
+import { AuthService } from './login/auth.service';
 import { routing } from './app.routing';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -21,14 +22,14 @@ import { AuthService } from './shared/services/auth.service';
   ],
   imports: [
     BrowserModule,
-    FormsModule, 
-    routing, 
-    VincularMuniciModule, 
-    CadastraUsuarioModule, 
+    FormsModule,
+    routing,
+    VincularMuniciModule,
+    CadastraUsuarioModule,
     PesquisarModule,
-     VincularPerfilModule,
-     AngularDualListBoxModule
-     
+    VincularPerfilModule,
+    AngularDualListBoxModule
+
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

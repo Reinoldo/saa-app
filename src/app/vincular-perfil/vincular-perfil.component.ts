@@ -11,7 +11,7 @@ export class VincularPerfilComponent implements OnInit {
 	keepSorted = true;
 	key:string;
 	display:string;
-	source:Array<any>;
+	source: any[];
 	confirmed:Array<any>;
 	userAdd = '';
 
@@ -160,7 +160,5 @@ export class VincularPerfilComponent implements OnInit {
 	swapDirection() {
 		this.sourceLeft = !this.sourceLeft;
 	}
-
- 
 
 }
