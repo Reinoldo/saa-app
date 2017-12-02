@@ -1,5 +1,6 @@
-import { AuthService } from './login/auth.service';
+
 import { Component } from '@angular/core';
+import { AuthService } from './shared/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,7 @@ export class AppComponent {
 
   ngOnInit(){
 
-      this.auth.mostrarMenu.subscribe(
+      this.auth.mostrarMenuEmitter.subscribe(
         mostrar => this.mostrarMenu = mostrar
       )
   }
