@@ -86,9 +86,9 @@
         </tr>
       </thead>
       <tbody>
-         <tr *ngFor="let cad of getCadastrosGS() ">
+         <tr *ngFor="let cad of getCadastrosGS()">
             <td>
-                <a href="" (click)="excluirGS()">
+                <a href="" (click)="excluirGS(cad.id)">
                   <img src="assets/x-2x.png" alt="">
                 </a>
                 </td>

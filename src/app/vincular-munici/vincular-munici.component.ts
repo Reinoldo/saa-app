@@ -27,8 +27,7 @@ export class VincularMuniciComponent implements OnInit {
 
 
   constructor(private listaEstados: EstadosBrService, private formBuilder: FormBuilder) {
-    this.anos = ["2007/2008", "2009/2010", "2011/2012", "2013/2014", "2015/2016"];
-    this.municipio = ['Luziânia', 'Brasília', 'Porto Alegre'];
+    
     
   
 
@@ -55,6 +54,8 @@ export class VincularMuniciComponent implements OnInit {
     
     this.listaEstados.getEstadosBr()
     .subscribe(dados => {this.estados = dados});
+    this.anos = ["2007/2008", "2009/2010", "2011/2012", "2013/2014", "2015/2016"];
+    this.municipio = ['Luziânia', 'Brasília', 'Porto Alegre'];
   }
 
   public getAnos() {
@@ -87,10 +88,13 @@ export class VincularMuniciComponent implements OnInit {
   
   }
 
-  excluirGS(){  
+  excluirGS(id: number){  
 
-    this.cadastrosGS.slice(1);
+    this.cadastrosGS.splice(id, 1);
+    console.log(this.cadastrosGS)
     this.cadastrosGS.sort();
+    console.log(this.cadastrosGS)
+    
     
   }
   excluirDAP(){
@@ -106,7 +110,7 @@ export class VincularMuniciComponent implements OnInit {
     //   .map(res => res)
     //   .subscribe(dados => {
         this.setCadastrosGS(this.formularioGS.value);
-        console.log(this.getCadastrosGS());
+        //console.log(this.getCadastrosGS());
         //this.formularioGS.reset();
       // },
       // (error: any) => alert('erro'));
@@ -122,7 +126,7 @@ export class VincularMuniciComponent implements OnInit {
     //   .subscribe(dados => {
         
         this.setCadastrosDAP(this.formularioDAP.value);
-        console.log(this.getCadastrosDAP());
+        //console.log(this.getCadastrosDAP());
         
       //   this.formularioDAP.reset();
       // },

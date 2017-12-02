@@ -12,6 +12,7 @@ import { VincularMuniciModule } from './vincular-munici/vincular-munici.module';
 import { VincularPerfilModule } from './vincular-perfil/vincular-perfil.module';
 import { CadastraUsuarioModule } from './cadastra-usuario/cadastra-usuario.module';
 import { AngularDualListBoxModule } from 'angular-dual-listbox';
+import { AuthService } from './shared/services/auth.service';
 
 
 @NgModule({
@@ -29,7 +30,7 @@ import { AngularDualListBoxModule } from 'angular-dual-listbox';
      AngularDualListBoxModule
      
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
