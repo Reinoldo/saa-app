@@ -28,16 +28,10 @@ export class VincularMuniciComponent implements OnInit {
 
 
   constructor(private listaEstados: EstadosBrService, private formBuilder: FormBuilder) {
-<<<<<<< HEAD
-    
-    
-  
-=======
     this.anos = ["2007/2008", "2009/2010", "2011/2012", "2013/2014", "2015/2016"];
     this.municipio = ['Luziânia', 'Brasília', 'Porto Alegre'];
 
 
->>>>>>> e9bac587dc74f6c100890e74e371e2708fd348b8
 
   }
 
@@ -59,13 +53,6 @@ export class VincularMuniciComponent implements OnInit {
       municipio: [null, Validators.required],
       status: ['Ativado', Validators.required]
     });
-<<<<<<< HEAD
-    
-    this.listaEstados.getEstadosBr()
-    .subscribe(dados => {this.estados = dados});
-    this.anos = ["2007/2008", "2009/2010", "2011/2012", "2013/2014", "2015/2016"];
-    this.municipio = ['Luziânia', 'Brasília', 'Porto Alegre'];
-=======
 
     this.listaEstados.getEstadosCidadesBr()
       .subscribe(dados => this.estados = dados);
@@ -73,7 +60,6 @@ export class VincularMuniciComponent implements OnInit {
 
 
 
->>>>>>> e9bac587dc74f6c100890e74e371e2708fd348b8
   }
 
   public getAnos() {
@@ -113,21 +99,8 @@ export class VincularMuniciComponent implements OnInit {
 
   }
 
-<<<<<<< HEAD
-  excluirGS(id: number){  
-
-    this.cadastrosGS.splice(id, 1);
-    console.log(this.cadastrosGS)
-    this.cadastrosGS.sort();
-    console.log(this.cadastrosGS)
-    
-    
-  }
-  excluirDAP(){
-=======
   excluirGS(index: number) {
 
->>>>>>> e9bac587dc74f6c100890e74e371e2708fd348b8
 
     this.cadastrosGS.splice(index, 1);
     //this.cadastrosGS.sort()
@@ -145,13 +118,6 @@ export class VincularMuniciComponent implements OnInit {
     // this.http.post(this.url, JSON.stringify(this.formularioGS.value))
     //   .map(res => res)
     //   .subscribe(dados => {
-<<<<<<< HEAD
-        this.setCadastrosGS(this.formularioGS.value);
-        //console.log(this.getCadastrosGS());
-        //this.formularioGS.reset();
-      // },
-      // (error: any) => alert('erro'));
-=======
     this.setCadastrosGS(this.formularioGS.value);
     console.log(this.getCadastrosGS());
     this.mostrarTabelaGS = true;
@@ -160,7 +126,6 @@ export class VincularMuniciComponent implements OnInit {
     //this.formularioGS.reset();
     // },
     // (error: any) => alert('erro'));
->>>>>>> e9bac587dc74f6c100890e74e371e2708fd348b8
 
 
   }
@@ -171,15 +136,6 @@ export class VincularMuniciComponent implements OnInit {
 
     //   .map(res => res)
     //   .subscribe(dados => {
-<<<<<<< HEAD
-        
-        this.setCadastrosDAP(this.formularioDAP.value);
-        //console.log(this.getCadastrosDAP());
-        
-      //   this.formularioDAP.reset();
-      // },
-      // (error: any) => alert('erro'))
-=======
 
     this.setCadastrosDAP(this.formularioDAP.value);
     console.log(this.getCadastrosDAP());
@@ -189,7 +145,6 @@ export class VincularMuniciComponent implements OnInit {
     //   this.formularioDAP.reset();
     // },
     // (error: any) => alert('erro'))
->>>>>>> e9bac587dc74f6c100890e74e371e2708fd348b8
 
   };
 

@@ -90,19 +90,10 @@
         </tr>
       </thead>
       <tbody>
-<<<<<<< HEAD
-         <tr *ngFor="let cad of getCadastrosGS()">
-            <td>
-                <a href="" (click)="excluirGS(cad.id)">
-                  <img src="assets/x-2x.png" alt="">
-                </a>
-                </td>
-=======
          <tr *ngFor="let cad of getCadastrosGS(); let i = index; " >
             <td>
                 <button (click)="excluirGS(i)">Excluir</button>
             </td>
->>>>>>> e9bac587dc74f6c100890e74e371e2708fd348b8
           <td>{{cad.anoPrograma}}</td>
           <td>reinoldo</td>
           <td>{{cad.municipio}}</td>
