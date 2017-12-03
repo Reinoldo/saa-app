@@ -84,6 +84,7 @@ export class VincularMuniciComponent implements OnInit {
     return this.cadastrosDAP;
   }
 
+  ngOnChange(){}
   public getMunicipio(sigla: string) {
     for (let s of this.getEstado()) {
       if (s.sigla == sigla) {

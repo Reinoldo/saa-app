@@ -13,7 +13,7 @@ export class PesquisarComponent implements OnInit {
 
   pesquisar: FormGroup;
   dados = [];
-  
+  mostrarResultado: boolean = false;
   dadosLogin: PesquisaLogin[];
 
 
@@ -40,6 +40,7 @@ export class PesquisarComponent implements OnInit {
     for (let v of this.dadosLogin) {
       //console.log(v);
       if (dados.login == v.login) {
+        this.dados = []
         this.dados.push(v);
         //console.log(this.dados)
       }
@@ -59,12 +60,14 @@ export class PesquisarComponent implements OnInit {
 
     if (this.dados.length == 0) {
       this.setPesquisa(this.pesquisar.value);
+      this.mostrarResultado = true;
       console.log(this.getDados())
     }
     else {
       this.dados.slice(length+1);
-    
+      
       this.setPesquisa(this.pesquisar.value);
+      this.mostrarResultado = true;
       console.log(this.getDados())
     }
 
